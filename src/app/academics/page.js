@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { academicLadder } from "@/lib/content";
+import { academicLadderDetailed, academicFacilities } from "@/lib/content";
 
 export const metadata = {
   title: "Academics | Siddhartha Boarding Secondary School",
@@ -11,7 +11,7 @@ export default function Academics() {
     <>
       <section className="relative bg-navy text-white">
         <div className="absolute inset-0">
-          <Image src="/images/see-toppers.jpg" alt="Academic achievements" fill className="object-cover opacity-20" />
+          <Image src="/images/student_voice_girl_outdoor.jpg" alt="Student at Siddhartha" fill className="object-cover opacity-20" />
         </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Academics</div>
@@ -22,43 +22,93 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* LADDER */}
+      {/* DETAILED LADDER */}
       <section className="py-16 sm:py-20">
         <div className="container-page">
           <div className="section-kicker">The Academic Path</div>
           <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Nursery to +2, One Continuous Journey</h2>
           <div className="section-divider" />
-          <div className="grid sm:grid-cols-5 gap-5">
-            {academicLadder.map((step) => (
-              <div key={step.step} className="bg-white border border-line border-t-4 border-t-navy p-5">
-                <div className="font-serif font-bold text-maroon text-[22px] mb-2">{step.step}</div>
-                <div className="font-semibold text-[15px] text-navy mb-2">{step.title}</div>
-                <p className="text-[13.5px] text-gray-600">{step.desc}</p>
+          <div className="space-y-5">
+            {academicLadderDetailed.map((step) => (
+              <div key={step.step} className="bg-white border border-line border-l-4 border-l-navy p-6 sm:p-7 grid sm:grid-cols-[auto_1fr] gap-6">
+                <div className="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-1 sm:w-[140px]">
+                  <div className="font-serif font-bold text-maroon text-[30px] leading-none">{step.step}</div>
+                  <div className="text-[12px] uppercase tracking-wide text-gray-500 font-semibold">{step.grades}</div>
+                </div>
+                <div>
+                  <h3 className="font-serif text-navy text-[19px] mb-2">{step.title}</h3>
+                  <p className="text-[14.5px] text-gray-700 leading-relaxed mb-3">{step.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {step.focus.map((f) => (
+                      <span key={f} className="text-[12px] bg-cream border border-line px-2.5 py-1 text-navy font-medium">
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* AFFILIATION */}
+      {/* TEACHING METHODOLOGY */}
       <section className="bg-cream py-16 sm:py-20">
         <div className="container-page grid sm:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="section-kicker">Affiliation &amp; Approval</div>
-            <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Nationally Recognized Standards</h2>
+            <div className="section-kicker">Our Teaching Philosophy</div>
+            <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Discussion Over Memorization</h2>
             <div className="section-divider" />
             <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
               Siddhartha Boarding Secondary School is affiliated with the National Examinations
               Board (NEB) and approved by Nepal&rsquo;s Ministry of Education, covering studies
               from the Secondary Education Examination (SEE) through our +2 Management program.
             </p>
+            <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
+              Our classrooms favor discussion-based learning over rote memorization. Teachers
+              are trained to pose questions before giving answers, and students are encouraged
+              to debate, explain their reasoning, and connect lessons to real situations &mdash;
+              not simply reproduce textbook lines on exam day.
+            </p>
             <p className="text-[15.5px] text-gray-700 leading-relaxed">
-              Our teaching philosophy favors discussion-based learning over rote memorization
-              &mdash; students are encouraged to question, discuss and apply what they learn,
-              guided by an experienced, highly qualified faculty.
+              This philosophy extends outside the classroom too: our students co-produce a
+              radio and TV discussion program with local media, putting real-world debate and
+              research skills into practice well beyond the syllabus.
             </p>
           </div>
-          <Image src="/images/campus-1.jpg" alt="Campus" width={560} height={400} className="object-cover w-full shadow-xl" />
+          <Image src="/images/student_voice_girl_radio2.jpg" alt="Student discussing on Radio Kawasoti" width={560} height={400} className="object-cover w-full shadow-xl" />
+        </div>
+      </section>
+
+      {/* ASSESSMENT SYSTEM */}
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="section-kicker">Assessment &amp; Progress</div>
+          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">How We Track Learning</h2>
+          <div className="section-divider" />
+          <div className="grid sm:grid-cols-3 gap-6">
+            <div className="bg-white border border-line p-6">
+              <h3 className="text-[16px] text-navy mb-2 font-serif">Periodic Assessments</h3>
+              <p className="text-[14px] text-gray-600">
+                Regular in-class tests and unit assessments track progress through the term,
+                rather than leaving everything to a single final exam.
+              </p>
+            </div>
+            <div className="bg-white border border-line p-6">
+              <h3 className="text-[16px] text-navy mb-2 font-serif">Model Examinations</h3>
+              <p className="text-[14px] text-gray-600">
+                SEE and +2 students sit full-length model exams ahead of the national board
+                exams, under exam-day conditions, to remove surprises on the real day.
+              </p>
+            </div>
+            <div className="bg-white border border-line p-6">
+              <h3 className="text-[16px] text-navy mb-2 font-serif">Parent Communication</h3>
+              <p className="text-[14px] text-gray-600">
+                Report cards and teacher feedback are shared with guardians so families stay
+                informed of a student&rsquo;s progress, not just their final grade.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -84,18 +134,19 @@ export default function Academics() {
       </section>
 
       {/* LEARNING RESOURCES */}
-      <section className="py-16 sm:py-20">
+      <section className="py-16 sm:py-20 bg-cream">
         <div className="container-page">
           <div className="section-kicker">Learning Resources</div>
           <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Labs, Library &amp; More</h2>
           <div className="section-divider" />
           <div className="grid sm:grid-cols-4 gap-5">
-            {["Science Lab", "Computer Lab", "Library", "Audio-Visual Room"].map((t) => (
-              <div key={t} className="bg-white border border-line p-6 text-center">
+            {academicFacilities.map((f) => (
+              <div key={f.title} className="bg-white border border-line p-6 text-center">
                 <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5 mx-auto">
-                  {t[0]}
+                  {f.title[0]}
                 </div>
-                <h3 className="text-[15.5px] text-navy font-serif">{t}</h3>
+                <h3 className="text-[15.5px] text-navy font-serif mb-1.5">{f.title}</h3>
+                <p className="text-[12.5px] text-gray-600">{f.desc}</p>
               </div>
             ))}
           </div>

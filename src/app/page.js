@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { academicLadder, facilities, siteInfo, stats } from "@/lib/content";
+import { academicLadderShort, siteInfo, stats, studentVoices } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -74,10 +74,13 @@ export default function Home() {
               compassion, and a constant reminder that every student who leaves our gates carries
               a responsibility to their country and to those who have less.
             </p>
+            <Link href="/about" className="inline-block mt-5 text-maroon font-semibold text-[14.5px] hover:underline">
+              Read our full story →
+            </Link>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <Image src="/images/students-1.jpg" alt="Students at a school event" width={400} height={400} className="rounded-sm object-cover h-full w-full shadow-lg" />
-            <Image src="/images/campus-1.jpg" alt="Campus building" width={400} height={400} className="rounded-sm object-cover h-full w-full shadow-lg mt-8" />
+            <Image src="/images/staff-1.jpg" alt="Faculty and staff" width={400} height={400} className="rounded-sm object-cover h-full w-full shadow-lg mt-8" />
           </div>
         </div>
       </section>
@@ -102,11 +105,9 @@ export default function Home() {
             <div className="text-maroon font-bold uppercase text-[13px] tracking-wide">
               {siteInfo.founder.name} &mdash; {siteInfo.founder.role}
             </div>
-            <p className="text-[14.5px] text-gray-600 mt-3 max-w-xl">
-              Beyond the classroom, {siteInfo.founder.name} has funded accident insurance for
-              students at neighboring community schools and established a scholarship endowment
-              in memory of his late parents &mdash; living proof of the school&rsquo;s own motto.
-            </p>
+            <Link href="/about" className="inline-block mt-4 text-maroon font-semibold text-[14.5px] hover:underline">
+              Read his full message →
+            </Link>
           </div>
         </div>
       </section>
@@ -118,12 +119,17 @@ export default function Home() {
           <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">A Clear Path, Nursery to +2</h2>
           <div className="section-divider" />
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-            {academicLadder.map((step) => (
+            {academicLadderShort.map((step) => (
               <div key={step.step} className="bg-white border border-line border-t-4 border-t-navy p-5 text-center">
                 <div className="font-serif font-bold text-maroon text-[20px]">{step.step}</div>
                 <div className="font-semibold text-[14px] mt-1.5 text-navy">{step.title}</div>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-7">
+            <Link href="/academics" className="btn-outline-navy">
+              Explore Full Curriculum
+            </Link>
           </div>
         </div>
       </section>
@@ -147,22 +153,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FACILITIES PREVIEW */}
+      {/* STUDENT VOICES */}
       <section className="py-16 sm:py-20 bg-cream">
+        <div className="container-page">
+          <div className="section-kicker">In Their Own Words</div>
+          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">The Student&rsquo;s Voice</h2>
+          <div className="section-divider" />
+          <p className="text-[15.5px] text-gray-700 leading-relaxed mb-9 max-w-2xl">
+            Our students co-produce <em>&ldquo;The Student&rsquo;s Voice&rdquo;</em> (Bidyarthiharuko
+            Aawaz) with Radio Kawasoti and Kawasoti TV &mdash; a youth talk program putting the
+            &ldquo;serve the country&rdquo; half of our motto directly into practice.
+          </p>
+          <div className="grid sm:grid-cols-4 gap-5">
+            {studentVoices.map((v) => (
+              <div key={v.image} className="bg-white border border-line overflow-hidden">
+                <Image src={v.image} alt={v.context} width={300} height={360} className="w-full h-[200px] object-cover" />
+                <div className="p-4">
+                  <p className="text-[13.5px] text-gray-700 italic leading-snug mb-2">&ldquo;{v.quote}&rdquo;</p>
+                  <div className="text-[11.5px] text-maroon font-semibold uppercase tracking-wide">{v.context}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FACILITIES PREVIEW */}
+      <section className="py-16 sm:py-20">
         <div className="container-page">
           <div className="section-kicker">Campus &amp; Facilities</div>
           <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Everything a Growing Mind Needs</h2>
           <div className="section-divider" />
           <div className="grid sm:grid-cols-3 gap-6">
-            {facilities.slice(0, 3).map((f) => (
-              <div key={f.title} className="bg-white border border-line p-6">
-                <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5">
-                  {f.title[0]}
-                </div>
-                <h3 className="text-[17px] text-navy mb-1.5 font-serif">{f.title}</h3>
-                <p className="text-[14.5px] text-gray-600">{f.desc}</p>
+            <div className="bg-white border border-line p-6">
+              <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5">
+                L
               </div>
-            ))}
+              <h3 className="text-[17px] text-navy mb-1.5 font-serif">Labs &amp; Library</h3>
+              <p className="text-[14.5px] text-gray-600">Science, computer and audio-visual facilities supporting hands-on learning at every level.</p>
+            </div>
+            <div className="bg-white border border-line p-6">
+              <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5">
+                H
+              </div>
+              <h3 className="text-[17px] text-navy mb-1.5 font-serif">Hostel &amp; Transport</h3>
+              <p className="text-[14.5px] text-gray-600">Supervised boarding and dedicated bus routes so distance never blocks a good education.</p>
+            </div>
+            <div className="bg-white border border-line p-6">
+              <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5">
+                S
+              </div>
+              <h3 className="text-[17px] text-navy mb-1.5 font-serif">Sports &amp; Co-Curricular</h3>
+              <p className="text-[14.5px] text-gray-600">A full playground, ECA, dance, music and educational tours round out campus life.</p>
+            </div>
           </div>
           <div className="text-center mt-9">
             <Link href="/campus-life" className="btn-outline-navy">
@@ -181,9 +224,9 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             {[
               ["/images/campus-2.jpg", "Campus building"],
-              ["/images/staff-1.jpg", "Faculty and staff"],
+              ["/images/staff-2.jpg", "Faculty and staff"],
               ["/images/students-2.jpg", "Students at a school event"],
-              ["/images/student-voice.jpg", "Student's Voice radio program"],
+              ["/images/community_insurance_event.jpg", "Community insurance program event"],
             ].map(([src, alt]) => (
               <Image key={src} src={src} alt={alt} width={300} height={200} className="h-[170px] w-full object-cover" />
             ))}

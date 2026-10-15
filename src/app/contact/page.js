@@ -13,7 +13,7 @@ export default function Contact() {
     <>
       <section className="relative bg-navy text-white">
         <div className="absolute inset-0">
-          <Image src="/images/campus-hero.jpg" alt="Campus" fill className="object-cover opacity-25" />
+          <Image src="/images/staff-2.jpg" alt="Faculty and staff group" fill className="object-cover opacity-25" />
         </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Contact Us</div>
@@ -45,6 +45,13 @@ export default function Contact() {
                       <a href={`tel:${p.replace(/\s/g, "")}`} className="hover:text-maroon">{p}</a>
                     </div>
                   ))}
+                </div>
+              </div>
+              <div>
+                <div className="text-[13px] font-bold uppercase tracking-wide text-maroon mb-1">Office Hours</div>
+                <div className="text-[15.5px] text-gray-700">
+                  Sunday &ndash; Friday, approx. 7:00 AM &ndash; 4:00 PM (Nepal time)
+                  <div className="text-[12.5px] text-gray-500 mt-1">* Please confirm exact hours by phone before visiting.</div>
                 </div>
               </div>
               <div>
@@ -80,6 +87,16 @@ export default function Contact() {
               <div>
                 <label className="block text-[13px] font-semibold text-navy mb-1.5">Phone Number</label>
                 <input type="tel" required className="w-full border border-line px-3.5 py-2.5 text-[14.5px] focus:outline-none focus:border-maroon" />
+              </div>
+              <div>
+                <label className="block text-[13px] font-semibold text-navy mb-1.5">Reason for Enquiry</label>
+                <select className="w-full border border-line px-3.5 py-2.5 text-[14.5px] focus:outline-none focus:border-maroon">
+                  <option>Admissions</option>
+                  <option>General Enquiry</option>
+                  <option>Scholarship / Fee Question</option>
+                  <option>Media / Partnership</option>
+                  <option>Other</option>
+                </select>
               </div>
               <div>
                 <label className="block text-[13px] font-semibold text-navy mb-1.5">Message</label>

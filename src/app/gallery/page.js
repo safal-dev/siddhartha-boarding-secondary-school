@@ -1,62 +1,28 @@
 import Image from "next/image";
+import { galleryCategories } from "@/lib/content";
 
 export const metadata = {
   title: "Gallery | Siddhartha Boarding Secondary School",
-  description: "Photo gallery of campus, students, staff and achievements at Siddhartha Boarding Secondary School, Nawalpur.",
+  description: "Photo gallery of campus, students, staff, community programs and achievements at Siddhartha Boarding Secondary School, Nawalpur.",
 };
-
-const categories = [
-  {
-    title: "Campus",
-    images: [
-      { src: "/images/campus-hero.jpg", alt: "Campus front elevation" },
-      { src: "/images/campus-1.jpg", alt: "Campus building" },
-      { src: "/images/campus-2.jpg", alt: "Campus building" },
-    ],
-  },
-  {
-    title: "Students",
-    images: [
-      { src: "/images/students-1.jpg", alt: "Students at a school event" },
-      { src: "/images/students-2.jpg", alt: "Students at a school event" },
-      { src: "/images/student-voice.jpg", alt: "Student's Voice radio program" },
-    ],
-  },
-  {
-    title: "Faculty & Staff",
-    images: [
-      { src: "/images/staff-1.jpg", alt: "Faculty and staff group" },
-      { src: "/images/staff-2.jpg", alt: "Faculty and staff group" },
-      { src: "/images/founder.jpg", alt: "Founder and Principal Bhoj Raj Dahal" },
-    ],
-  },
-  {
-    title: "Achievements",
-    images: [
-      { src: "/images/see-toppers.jpg", alt: "SEE result toppers banner" },
-      { src: "/images/seal-stamp.jpg", alt: "Official school seal" },
-      { src: "/images/logo.png", alt: "School logo" },
-    ],
-  },
-];
 
 export default function Gallery() {
   return (
     <>
       <section className="relative bg-navy text-white">
         <div className="absolute inset-0">
-          <Image src="/images/students-2.jpg" alt="Gallery" fill className="object-cover opacity-25" />
+          <Image src="/images/student_voice_girl_radio1.jpg" alt="Student recording at Radio Kawasoti" fill className="object-cover opacity-25" />
         </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Gallery</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">Moments from Siddhartha</h1>
           <p className="text-[#c3c9e6] max-w-xl mx-auto">
-            Campus, classrooms, achievements and the people who make Siddhartha home.
+            Campus, classrooms, community programs and the people who make Siddhartha home.
           </p>
         </div>
       </section>
 
-      {categories.map((cat, i) => (
+      {galleryCategories.map((cat, i) => (
         <section key={cat.title} className={i % 2 === 0 ? "py-14 sm:py-16" : "py-14 sm:py-16 bg-cream"}>
           <div className="container-page">
             <div className="section-kicker">{cat.title}</div>
@@ -71,6 +37,7 @@ export default function Gallery() {
                     height={300}
                     className="w-full h-[240px] object-cover"
                   />
+                  <p className="text-[12px] text-gray-500 mt-2 px-1">{img.alt}</p>
                 </div>
               ))}
             </div>

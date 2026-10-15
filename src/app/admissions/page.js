@@ -1,16 +1,17 @@
 import Image from "next/image";
-import { siteInfo } from "@/lib/content";
+import { admissionFaqs, admissionSteps, siteInfo } from "@/lib/content";
 
 export const metadata = {
   title: "Admissions | Siddhartha Boarding Secondary School",
-  description: "Admissions process, scholarships and enquiry form for Siddhartha Boarding Secondary School, Nawalpur.",
+  description: "Admissions process, eligibility, scholarships and enquiry form for Siddhartha Boarding Secondary School, Nawalpur.",
 };
 
-const steps = [
-  { n: "01", t: "Enquire", d: "Call the school office or submit the enquiry form below with your child's grade and details." },
-  { n: "02", t: "Visit & Document Check", d: "Visit the campus with your child's previous academic records and required documents." },
-  { n: "03", t: "Assessment", d: "A short interaction/assessment may be scheduled depending on grade level." },
-  { n: "04", t: "Confirmation & Enrollment", d: "Once confirmed, complete enrollment formalities and fee submission to secure the seat." },
+const documents = [
+  "Student's previous school records / transfer certificate (if transferring)",
+  "Copy of student's birth certificate",
+  "Copy of guardian's citizenship certificate",
+  "Recent passport-size photographs of the student",
+  "Immunization/health record (for Montessori & Primary applicants)",
 ];
 
 export default function Admissions() {
@@ -18,7 +19,7 @@ export default function Admissions() {
     <>
       <section className="relative bg-navy text-white">
         <div className="absolute inset-0">
-          <Image src="/images/students-1.jpg" alt="Students" fill className="object-cover opacity-25" />
+          <Image src="/images/students-1.jpg" alt="Students at a school event" fill className="object-cover opacity-25" />
         </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Admissions</div>
@@ -34,7 +35,7 @@ export default function Admissions() {
           <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">A Simple, Guided Admission Process</h2>
           <div className="section-divider" />
           <div className="grid sm:grid-cols-4 gap-5">
-            {steps.map((s) => (
+            {admissionSteps.map((s) => (
               <div key={s.n} className="bg-white border border-line p-6">
                 <div className="font-serif font-bold text-maroon text-[22px] mb-2">{s.n}</div>
                 <h3 className="font-semibold text-navy text-[15.5px] mb-2">{s.t}</h3>
@@ -42,17 +43,43 @@ export default function Admissions() {
               </div>
             ))}
           </div>
-          <p className="text-[13px] text-gray-500 mt-5">
-            * Exact fee structure, required documents and session dates are confirmed directly
-            with the school office — please call or visit for current details.
-          </p>
+        </div>
+      </section>
+
+      {/* ELIGIBILITY + DOCUMENTS */}
+      <section className="bg-cream py-16 sm:py-20">
+        <div className="container-page grid sm:grid-cols-2 gap-12">
+          <div>
+            <div className="section-kicker">Eligibility</div>
+            <h2 className="text-[24px] sm:text-[28px] text-navy mb-1">Who Can Apply</h2>
+            <div className="section-divider" />
+            <ul className="space-y-3 text-[15px] text-gray-700">
+              <li className="flex gap-3"><span className="text-maroon font-bold">•</span> Montessori/Nursery: age-appropriate for the grade, per school guidelines.</li>
+              <li className="flex gap-3"><span className="text-maroon font-bold">•</span> Primary – Secondary (Grades 1–10): open to transfers with a previous school record, subject to seat availability.</li>
+              <li className="flex gap-3"><span className="text-maroon font-bold">•</span> +2 Management (Grades 11–12): open to SEE graduates meeting NEB&rsquo;s minimum eligibility for higher secondary admission.</li>
+            </ul>
+          </div>
+          <div>
+            <div className="section-kicker">Documents Checklist</div>
+            <h2 className="text-[24px] sm:text-[28px] text-navy mb-1">What to Bring</h2>
+            <div className="section-divider" />
+            <ul className="space-y-3 text-[15px] text-gray-700">
+              {documents.map((d) => (
+                <li key={d} className="flex gap-3"><span className="text-maroon font-bold">•</span> {d}</li>
+              ))}
+            </ul>
+            <p className="text-[12.5px] text-gray-500 mt-5">
+              * This is a general checklist. Please confirm the exact requirements for your
+              child&rsquo;s grade with the school office before visiting.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* SCHOLARSHIP */}
-      <section className="bg-cream py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <div className="container-page grid sm:grid-cols-2 gap-12 items-center">
-          <Image src="/images/founder.jpg" alt="Founder" width={480} height={400} className="object-cover w-full shadow-xl" />
+          <Image src="/images/community_insurance_event.jpg" alt="Community scholarship and insurance program" width={480} height={400} className="object-cover w-full shadow-xl" />
           <div>
             <div className="section-kicker">Scholarships &amp; Support</div>
             <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Education for Every Family</h2>
@@ -60,14 +87,35 @@ export default function Admissions() {
             <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
               In the spirit of our motto &mdash; &ldquo;{siteInfo.motto}&rdquo; &mdash; the
               school supports scholarship schemes for deserving students. Founder
-              {" "}{siteInfo.founder.name} has also personally established community scholarship
-              and insurance programs for students beyond our own campus, reflecting the values
-              we hope every family considering Siddhartha will share.
+              {" "}{siteInfo.founder.name} has also personally funded scholarship and insurance
+              programs for students at community schools beyond our own campus, through the
+              Devilal&ndash;Ramadevi Smriti Chhatrabritti Akshaya Kosh endowment &mdash;
+              reflecting the values we hope every family considering Siddhartha will share.
             </p>
             <p className="text-[15.5px] text-gray-700 leading-relaxed">
               Contact the school office directly to discuss scholarship eligibility and current
               fee arrangements for your child&rsquo;s grade level.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-cream py-16 sm:py-20">
+        <div className="container-page max-w-3xl">
+          <div className="section-kicker">Frequently Asked Questions</div>
+          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Common Admission Questions</h2>
+          <div className="section-divider" />
+          <div className="space-y-4">
+            {admissionFaqs.map((f) => (
+              <details key={f.q} className="bg-white border border-line p-5 group">
+                <summary className="font-semibold text-navy text-[15.5px] cursor-pointer list-none flex justify-between items-center">
+                  {f.q}
+                  <span className="text-maroon group-open:rotate-45 transition-transform text-[20px] leading-none">+</span>
+                </summary>
+                <p className="text-[14.5px] text-gray-600 mt-3 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

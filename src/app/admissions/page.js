@@ -56,7 +56,6 @@ export default function Admissions() {
             <ul className="space-y-3 text-[15px] text-gray-700">
               <li className="flex gap-3"><span className="text-maroon font-bold">•</span> Montessori/Nursery: age-appropriate for the grade, per school guidelines.</li>
               <li className="flex gap-3"><span className="text-maroon font-bold">•</span> Primary – Secondary (Grades 1–10): open to transfers with a previous school record, subject to seat availability.</li>
-              <li className="flex gap-3"><span className="text-maroon font-bold">•</span> +2 Management (Grades 11–12): open to SEE graduates meeting NEB&rsquo;s minimum eligibility for higher secondary admission.</li>
             </ul>
           </div>
           <div>
@@ -146,7 +145,6 @@ export default function Admissions() {
                 <option>Primary (1-5)</option>
                 <option>Lower Secondary (6-8)</option>
                 <option>Secondary (9-10)</option>
-                <option>+2 Management (11-12)</option>
               </select>
             </div>
             <div className="sm:col-span-2">

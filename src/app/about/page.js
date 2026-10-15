@@ -12,7 +12,7 @@ const timeline = [
   { year: "2010s", text: "Separate academic blocks are built for primary, lower secondary, secondary and higher secondary levels." },
   { year: "2022", text: "The school celebrates its 33rd anniversary, honoring an unusual cohort: 13 pairs of twins studying across its classrooms in a single academic year." },
   { year: "2024", text: "Founder Bhoj Raj Dahal funds accident insurance for ~1,700 students across four community schools in Kawasoti Municipality, extending the school's service mission beyond its own gates." },
-  { year: "Today", text: "Siddhartha serves 1,600+ students from Nursery through +2 Management, and remains one of Kawasoti's most recognized private institutions." },
+  { year: "Today", text: "Siddhartha serves 1,600+ students from Nursery through Grade 10, and remains one of Kawasoti's most recognized private institutions." },
 ];
 
 const values = [
@@ -114,29 +114,30 @@ export default function About() {
 
       {/* FOUNDER FULL MESSAGE */}
       <section className="py-16 sm:py-20">
-        <div className="container-page grid sm:grid-cols-[300px_1fr] gap-12 items-start">
-          <Image
-            src="/images/founder.jpg"
-            alt="Bhoj Raj Dahal, Founder and Principal"
-            width={300}
-            height={370}
-            className="rounded border-[6px] border-white shadow-2xl object-cover w-full"
-          />
-          <div>
-            <div className="section-kicker">Founder &amp; Principal&rsquo;s Message</div>
-            <h2 className="text-[24px] sm:text-[28px] text-navy mb-4">{siteInfo.founder.name}</h2>
-            <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
-              &ldquo;When I founded this school in 2046 B.S., I wanted to build more than a
-              place where children memorize facts for an exam. I wanted a school that produces
-              citizens &mdash; people who look at their village, their country, and the families
-              with less than their own, and feel a duty to act.&rdquo;
-            </p>
-            <p className="text-[15.5px] text-gray-700 leading-relaxed">
-              &ldquo;That is why our motto is not decoration. It is instruction. &lsquo;Live to
-              learn, learn to serve the country and the poor&rsquo; is what I ask of every
-              teacher in our staff room, and what I hope every parent asks of their child when
-              they come home from school.&rdquo;
-            </p>
+        <div className="container-page">
+          <div className="section-kicker">Founder &amp; Principal&rsquo;s Message</div>
+          <h2 className="text-[24px] sm:text-[28px] text-navy mb-6">{siteInfo.founder.name}</h2>
+          <div className="grid sm:grid-cols-[110px_1fr] gap-8 items-start">
+            <div className="w-[110px] h-[110px] rounded-full bg-navy flex items-center justify-center shadow-xl border-4 border-gold/70">
+              <Image src="/images/logo.png" alt="School crest" width={72} height={72} />
+            </div>
+            <div>
+              <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
+                &ldquo;When I founded this school in 2046 B.S., I wanted to build more than a
+                place where children memorize facts for an exam. I wanted a school that produces
+                citizens &mdash; people who look at their village, their country, and the families
+                with less than their own, and feel a duty to act.&rdquo;
+              </p>
+              <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
+                &ldquo;That is why our motto is not decoration. It is instruction. &lsquo;Live to
+                learn, learn to serve the country and the poor&rsquo; is what I ask of every
+                teacher in our staff room, and what I hope every parent asks of their child when
+                they come home from school.&rdquo;
+              </p>
+              <div className="text-maroon font-bold uppercase text-[13px] tracking-wide">
+                {siteInfo.founder.name} &mdash; {siteInfo.founder.role}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -183,7 +184,7 @@ export default function About() {
             <div className="bg-white border border-line p-6">
               <h3 className="text-[17px] text-navy mb-2 font-serif">Separate Blocks by Level</h3>
               <p className="text-[14.5px] text-gray-600">
-                Primary, lower secondary, secondary and +2 students each learn in their own
+                Primary, lower secondary and secondary students each learn in their own
                 dedicated building, so younger and older students never disrupt one another.
               </p>
             </div>
@@ -231,7 +232,7 @@ export default function About() {
           </div>
           <p className="text-[15.5px] text-gray-700 leading-relaxed mt-6 max-w-2xl">
             Our highly qualified, experienced teachers lead every classroom &mdash; from our
-            Montessori wing to our +2 Management faculty &mdash; with a shared emphasis on
+            Montessori wing through our SEE-preparation faculty &mdash; with a shared emphasis on
             discussion-based teaching and genuine care for every student&rsquo;s growth.
           </p>
         </div>

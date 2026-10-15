@@ -18,7 +18,7 @@ const sourceSans = Source_Sans_3({
 export const metadata = {
   title: "Siddhartha Boarding Secondary School, Nawalpur",
   description:
-    "Siddhartha Boarding Secondary School, Kawasoti-3, Nawalpur, Nepal. Nursery to +2 Management, NEB-affiliated, established 2046 B.S. (1989). Live to learn, learn to serve the country and the poor.",
+    "Siddhartha Boarding Secondary School, Kawasoti-3, Nawalpur, Nepal. Nursery to Grade 10 (SEE), established 2046 B.S. (1989). Live to learn, learn to serve the country and the poor.",
 };
 
 export default function RootLayout({ children }) {

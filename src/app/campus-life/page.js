@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { boardingRoutine, campusFacilities, studentVoices } from "@/lib/content";
+import { campusFacilities, studentVoices } from "@/lib/content";
 
 export const metadata = {
   title: "Campus Life | Siddhartha Boarding Secondary School",
-  description: "Facilities, hostel/boarding, daily routine and co-curricular life at Siddhartha Boarding Secondary School, Nawalpur.",
+  description: "Facilities, transportation and co-curricular life at Siddhartha Boarding Secondary School, Nawalpur.",
 };
 
 const clubs = [
@@ -26,7 +26,7 @@ export default function CampusLife() {
           <div className="section-kicker !text-gold">Campus Life</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">Life On Our 20-Ropani Campus</h1>
           <p className="text-[#c3c9e6] max-w-xl mx-auto">
-            Boarding, sports and community &mdash; everything a student needs to grow beyond the classroom.
+            Transport, sports and community &mdash; everything a student needs to grow beyond the classroom.
           </p>
         </div>
       </section>
@@ -34,7 +34,7 @@ export default function CampusLife() {
       {/* FACILITIES GRID */}
       <section className="py-16 sm:py-20">
         <div className="container-page">
-          <div className="section-kicker">Residential &amp; Recreational Facilities</div>
+          <div className="section-kicker">Campus &amp; Recreational Facilities</div>
           <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Everything Outside the Classroom</h2>
           <div className="section-divider" />
           <div className="grid sm:grid-cols-3 gap-5">
@@ -51,43 +51,24 @@ export default function CampusLife() {
         </div>
       </section>
 
-      {/* BOARDING / HOSTEL + ROUTINE */}
+      {/* TRANSPORTATION & ACCESSIBILITY */}
       <section className="bg-cream py-16 sm:py-20">
-        <div className="container-page">
-          <div className="grid sm:grid-cols-2 gap-12 items-center mb-14">
-            <div>
-              <div className="section-kicker">Boarding</div>
-              <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">A Home Away From Home</h2>
-              <div className="section-divider" />
-              <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
-                &ldquo;Boarding&rdquo; is part of our name for a reason. Many of our students
-                travel from villages beyond Kawasoti, and our hostel facility exists so distance
-                never stands between a child and a quality education.
-              </p>
-              <p className="text-[15.5px] text-gray-700 leading-relaxed">
-                Supervised accommodation, regular meals, and a disciplined daily routine give
-                boarding students the stability to focus on their studies and co-curricular life
-                &mdash; while our transportation service supports day scholars from surrounding areas.
-              </p>
-            </div>
-            <Image src="/images/campus-2.jpg" alt="Campus building with event banner" width={560} height={400} className="object-cover w-full shadow-xl" />
-          </div>
-
-          <div className="bg-white border border-line p-7 sm:p-9">
-            <h3 className="font-serif text-navy text-[19px] mb-5">A Typical Boarding Day (indicative)</h3>
-            <div className="grid sm:grid-cols-2 gap-x-10 gap-y-3">
-              {boardingRoutine.map((r) => (
-                <div key={r.time} className="flex gap-4 border-b border-line pb-2.5">
-                  <div className="text-maroon font-bold text-[13.5px] w-[76px] shrink-0">{r.time}</div>
-                  <div className="text-[14px] text-gray-700">{r.activity}</div>
-                </div>
-              ))}
-            </div>
-            <p className="text-[12px] text-gray-500 mt-5">
-              * Schedule is indicative and may vary by grade level and term &mdash; confirm the
-              current routine with the hostel supervisor.
+        <div className="container-page grid sm:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="section-kicker">Transportation</div>
+            <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Getting to Campus</h2>
+            <div className="section-divider" />
+            <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
+              Siddhartha is a day school &mdash; all students commute to campus daily. Dedicated
+              bus routes connect Kawasoti and nearby villages to our 20-ropani campus, so
+              distance doesn&rsquo;t stand between a child and a quality education.
+            </p>
+            <p className="text-[15.5px] text-gray-700 leading-relaxed">
+              Students who prefer to cycle in have access to our supervised cycle stand, and the
+              on-campus canteen keeps everyone fed through the school day.
             </p>
           </div>
+          <Image src="/images/campus-2.jpg" alt="Campus building with event banner" width={560} height={400} className="object-cover w-full shadow-xl" />
         </div>
       </section>
 

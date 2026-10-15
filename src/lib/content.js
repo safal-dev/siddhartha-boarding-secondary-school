@@ -25,12 +25,12 @@ export const navLinks = [
 ];
 
 // Condensed ladder used on the Home page only (index strip)
+// School currently teaches Montessori/Nursery through Grade 10 (SEE) only.
 export const academicLadderShort = [
   { step: "I", title: "Montessori / Nursery" },
   { step: "II", title: "Primary" },
   { step: "III", title: "Lower Secondary" },
   { step: "IV", title: "Secondary (SEE)" },
-  { step: "V", title: "+2 Management" },
 ];
 
 // Full ladder with subject detail, used on the Academics page only
@@ -60,29 +60,22 @@ export const academicLadderDetailed = [
     step: "IV",
     title: "Secondary (SEE)",
     grades: "Grades 9 – 10",
-    desc: "Focused preparation for the Secondary Education Examination (SEE), Nepal's national board exam. Extra revision sessions and regular model tests keep students exam-ready.",
-    focus: ["Core SEE subjects (Math, Science, English, Nepali, Social Studies)", "Optional subjects by stream", "Regular model/mock examinations", "Career & stream counseling for +2"],
-  },
-  {
-    step: "V",
-    title: "+2 Management",
-    grades: "Grades 11 – 12",
-    desc: "A National Examinations Board (NEB)-affiliated higher secondary program in Management, preparing students for commerce, business and administration pathways at the college level.",
-    focus: ["Principles of Management", "Accountancy & Economics", "English & Nepali", "Business Studies / Computer options"],
+    desc: "Focused preparation for the Secondary Education Examination (SEE), Nepal's national Grade 10 board exam — the final stage of the school's academic ladder.",
+    focus: ["Core SEE subjects (Math, Science, English, Nepali, Social Studies)", "Optional subjects", "Regular model/mock examinations", "Post-SEE guidance & counseling"],
   },
 ];
 
 // Academic / learning-resource facilities — used on the Academics page only
 export const academicFacilities = [
-  { title: "Science Lab", desc: "A dedicated laboratory for practical secondary and +2 level science classes, from basic chemistry to physics demonstrations." },
+  { title: "Science Lab", desc: "A dedicated laboratory for practical secondary-level science classes, from basic chemistry to physics demonstrations." },
   { title: "Computer Lab", desc: "Hands-on computer literacy and IT coursework on dedicated school workstations." },
-  { title: "Library", desc: "A well-stocked reading room with reference material across every level, from early readers to +2 research." },
+  { title: "Library", desc: "A well-stocked reading room with reference material across every level, from early readers to SEE revision." },
   { title: "Audio-Visual Room", desc: "Multimedia-equipped space supporting our discussion-based, interactive teaching style." },
 ];
 
-// Residential / recreational facilities — used on the Campus Life page only
+// Campus / recreational facilities — used on the Campus Life page only
+// Note: the school does not currently operate a hostel/boarding facility.
 export const campusFacilities = [
-  { title: "Hostel & Boarding", desc: "Supervised, safe accommodation for students from distant villages — the \"Boarding\" in our name, taken seriously." },
   { title: "Transportation", desc: "Dedicated bus routes connecting Kawasoti and nearby villages to campus every school day." },
   { title: "Playground & Sports", desc: "A spacious ground with full sports equipment for physical education, athletics and team games." },
   { title: "Montessori Wing", desc: "A dedicated, child-safe space for our youngest learners to explore, play and begin formal learning." },
@@ -122,20 +115,6 @@ export const studentVoices = [
   },
 ];
 
-// A day in the life of a boarding student — general/indicative schedule
-export const boardingRoutine = [
-  { time: "5:30 AM", activity: "Wake-up & morning routine" },
-  { time: "6:00 AM", activity: "Morning exercise / assembly" },
-  { time: "7:00 AM", activity: "Breakfast" },
-  { time: "7:45 AM", activity: "Self-study / revision period" },
-  { time: "9:00 AM", activity: "School day begins" },
-  { time: "4:00 PM", activity: "School day ends, evening snacks" },
-  { time: "4:30 PM", activity: "Sports, clubs & free time" },
-  { time: "6:00 PM", activity: "Evening study hall" },
-  { time: "7:30 PM", activity: "Dinner" },
-  { time: "8:30 PM", activity: "Supervised study / lights out by grade level" },
-];
-
 export const admissionSteps = [
   { n: "01", t: "Enquire", d: "Call the school office or submit the enquiry form below with your child's grade and details." },
   { n: "02", t: "Visit & Document Check", d: "Visit the campus with your child's previous academic records and required documents." },
@@ -146,11 +125,7 @@ export const admissionSteps = [
 export const admissionFaqs = [
   {
     q: "What grades can my child join?",
-    a: "We admit students from Montessori/Nursery through Grade 10, and into +2 Management for grades 11-12, subject to seat availability at each level.",
-  },
-  {
-    q: "Is hostel/boarding available for every grade?",
-    a: "Boarding is available for students across grade levels — speak to the school office about current availability and arrangements for your child's specific grade.",
+    a: "We admit students from Montessori/Nursery through Grade 10 (SEE), subject to seat availability at each level.",
   },
   {
     q: "Does the school offer scholarships?",
@@ -188,7 +163,7 @@ export const galleryCategories = [
     images: [
       { src: "/images/staff-1.jpg", alt: "Faculty and staff group" },
       { src: "/images/staff-2.jpg", alt: "Faculty and staff group" },
-      { src: "/images/founder.jpg", alt: "Founder and Principal Bhoj Raj Dahal" },
+      { src: "/images/student_voice_girl_radio2.jpg", alt: "Student on The Student's Voice program" },
     ],
   },
   {

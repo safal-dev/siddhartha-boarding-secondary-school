@@ -3,7 +3,7 @@ import { academicLadderDetailed, academicFacilities } from "@/lib/content";
 
 export const metadata = {
   title: "Academics | Siddhartha Boarding Secondary School",
-  description: "Academic programs from Nursery to +2 Management, NEB-affiliated, at Siddhartha Boarding Secondary School, Nawalpur.",
+  description: "Academic programs from Nursery to Grade 10 (SEE) at Siddhartha Boarding Secondary School, Nawalpur.",
 };
 
 export default function Academics() {
@@ -17,7 +17,7 @@ export default function Academics() {
           <div className="section-kicker !text-gold">Academics</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">Learning That Leads Somewhere</h1>
           <p className="text-[#c3c9e6] max-w-xl mx-auto">
-            NEB-affiliated, Ministry-approved education from Nursery through +2 Management.
+            Ministry-approved education from Nursery through Grade 10 (SEE).
           </p>
         </div>
       </section>
@@ -26,7 +26,7 @@ export default function Academics() {
       <section className="py-16 sm:py-20">
         <div className="container-page">
           <div className="section-kicker">The Academic Path</div>
-          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Nursery to +2, One Continuous Journey</h2>
+          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Nursery to Grade 10, One Continuous Journey</h2>
           <div className="section-divider" />
           <div className="space-y-5">
             {academicLadderDetailed.map((step) => (
@@ -60,9 +60,9 @@ export default function Academics() {
             <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Discussion Over Memorization</h2>
             <div className="section-divider" />
             <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
-              Siddhartha Boarding Secondary School is affiliated with the National Examinations
-              Board (NEB) and approved by Nepal&rsquo;s Ministry of Education, covering studies
-              from the Secondary Education Examination (SEE) through our +2 Management program.
+              Siddhartha Boarding Secondary School is approved by Nepal&rsquo;s Ministry of
+              Education, covering studies from Montessori/Nursery through the Secondary
+              Education Examination (SEE) at Grade 10.
             </p>
             <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">
               Our classrooms favor discussion-based learning over rote memorization. Teachers
@@ -97,8 +97,8 @@ export default function Academics() {
             <div className="bg-white border border-line p-6">
               <h3 className="text-[16px] text-navy mb-2 font-serif">Model Examinations</h3>
               <p className="text-[14px] text-gray-600">
-                SEE and +2 students sit full-length model exams ahead of the national board
-                exams, under exam-day conditions, to remove surprises on the real day.
+                SEE candidates sit full-length model exams ahead of the national board exam,
+                under exam-day conditions, to remove surprises on the real day.
               </p>
             </div>
             <div className="bg-white border border-line p-6">

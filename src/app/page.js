@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FounderQuote from "@/components/FounderQuote";
 import { academicLadderShort, siteInfo, stats, studentVoices } from "@/lib/content";
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="inline-block mt-9 text-[12.5px] uppercase tracking-[0.12em] text-[#cfd4e6] border-t border-white/25 pt-5">
-            Established {siteInfo.established} &nbsp;|&nbsp; NEB Affiliated &nbsp;|&nbsp; Nursery &ndash; Grade 12
+            Established {siteInfo.established} &nbsp;|&nbsp; Ministry-Approved &nbsp;|&nbsp; Nursery &ndash; Grade 10
           </div>
         </div>
       </section>
@@ -87,28 +88,12 @@ export default function Home() {
 
       {/* FOUNDER MESSAGE */}
       <section className="bg-white border-t border-b border-line py-16 sm:py-20">
-        <div className="container-page grid sm:grid-cols-[260px_1fr] gap-11 items-center">
-          <Image
-            src="/images/founder.jpg"
-            alt="Bhoj Raj Dahal, Founder and Principal"
-            width={260}
-            height={320}
-            className="rounded border-[6px] border-white shadow-2xl object-cover w-full"
-          />
-          <div>
-            <div className="section-kicker">From the Founder&rsquo;s Desk</div>
-            <blockquote className="font-serif text-[20px] sm:text-[23px] text-navy leading-relaxed mb-4">
-              &ldquo;We built this school on one belief &mdash; education is only complete when
-              it is used to serve the nation and the poor. Every child who walks through our
-              gates carries that duty forward.&rdquo;
-            </blockquote>
-            <div className="text-maroon font-bold uppercase text-[13px] tracking-wide">
-              {siteInfo.founder.name} &mdash; {siteInfo.founder.role}
-            </div>
-            <Link href="/about" className="inline-block mt-4 text-maroon font-semibold text-[14.5px] hover:underline">
-              Read his full message →
-            </Link>
-          </div>
+        <div className="container-page">
+          <div className="section-kicker">From the Founder&rsquo;s Desk</div>
+          <FounderQuote quote="We built this school on one belief — education is only complete when it is used to serve the nation and the poor. Every child who walks through our gates carries that duty forward." />
+          <Link href="/about" className="inline-block mt-5 text-maroon font-semibold text-[14.5px] hover:underline">
+            Read his full message →
+          </Link>
         </div>
       </section>
 
@@ -116,9 +101,9 @@ export default function Home() {
       <section className="py-16 sm:py-20">
         <div className="container-page">
           <div className="section-kicker">Academics</div>
-          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">A Clear Path, Nursery to +2</h2>
+          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">A Clear Path, Nursery to Grade 10</h2>
           <div className="section-divider" />
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {academicLadderShort.map((step) => (
               <div key={step.step} className="bg-white border border-line border-t-4 border-t-navy p-5 text-center">
                 <div className="font-serif font-bold text-maroon text-[20px]">{step.step}</div>
@@ -196,8 +181,8 @@ export default function Home() {
               <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5">
                 H
               </div>
-              <h3 className="text-[17px] text-navy mb-1.5 font-serif">Hostel &amp; Transport</h3>
-              <p className="text-[14.5px] text-gray-600">Supervised boarding and dedicated bus routes so distance never blocks a good education.</p>
+              <h3 className="text-[17px] text-navy mb-1.5 font-serif">Transportation</h3>
+              <p className="text-[14.5px] text-gray-600">Dedicated bus routes connecting Kawasoti and nearby villages so distance never blocks a good education.</p>
             </div>
             <div className="bg-white border border-line p-6">
               <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5">

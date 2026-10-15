@@ -19,6 +19,13 @@ export const metadata = {
   title: "Siddhartha Boarding Secondary School, Nawalpur",
   description:
     "Siddhartha Boarding Secondary School, Kawasoti-3, Nawalpur, Nepal. Nursery to Grade 10 (SEE), established 2046 B.S. (1989). Live to learn, learn to serve the country and the poor.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/icon-512.png", sizes: "512x512" }],
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -161,9 +161,9 @@ export const galleryCategories = [
   {
     title: "Faculty & Staff",
     images: [
+      { src: "/images/founder.png", alt: "Bhoj Raj Dahal, Founder and Principal" },
       { src: "/images/staff-1.jpg", alt: "Faculty and staff group" },
       { src: "/images/staff-2.jpg", alt: "Faculty and staff group" },
-      { src: "/images/student_voice_girl_radio2.jpg", alt: "Student on The Student's Voice program" },
     ],
   },
   {

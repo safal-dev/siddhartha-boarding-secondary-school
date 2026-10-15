@@ -2,19 +2,16 @@ import Image from "next/image";
 import { siteInfo } from "@/lib/content";
 
 /**
- * Founder message block without a photo — we don't currently have a clean,
- * professional headshot of the founder (only a festival-greeting graphic
- * with decorative borders/text, which isn't usable). This uses the school
- * crest + a styled pull-quote instead. Swap in a real portrait photo here
- * once the school supplies one (see README "Known gaps").
+ * Founder message block — crest-framed portrait photo + pull-quote.
+ * Uses the real portrait photo supplied by the school (public/images/founder.png).
  */
 export default function FounderQuote({ quote, compact = false }) {
   return (
-    <div className={`flex ${compact ? "flex-col items-center text-center" : "flex-col sm:flex-row items-center sm:items-start"} gap-6`}>
-      <div className="shrink-0 w-[110px] h-[110px] rounded-full bg-navy flex items-center justify-center shadow-xl border-4 border-gold/70">
-        <Image src="/images/logo.png" alt="School crest" width={72} height={72} />
+    <div className={`flex ${compact ? "flex-col items-center text-center" : "flex-col sm:flex-row items-center sm:items-start"} gap-7`}>
+      <div className="shrink-0 w-[150px] h-[150px] sm:w-[170px] sm:h-[170px] rounded-full overflow-hidden shadow-2xl border-4 border-gold/80 bg-navy relative">
+        <Image src="/images/founder.png" alt="Bhoj Raj Dahal, Founder and Principal" fill className="object-cover" />
       </div>
-      <div className={compact ? "" : ""}>
+      <div>
         <blockquote className={`font-serif text-navy leading-relaxed mb-3 ${compact ? "text-[18px]" : "text-[20px] sm:text-[23px]"}`}>
           &ldquo;{quote}&rdquo;
         </blockquote>

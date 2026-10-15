@@ -117,9 +117,9 @@ export default function About() {
         <div className="container-page">
           <div className="section-kicker">Founder &amp; Principal&rsquo;s Message</div>
           <h2 className="text-[24px] sm:text-[28px] text-navy mb-6">{siteInfo.founder.name}</h2>
-          <div className="grid sm:grid-cols-[110px_1fr] gap-8 items-start">
-            <div className="w-[110px] h-[110px] rounded-full bg-navy flex items-center justify-center shadow-xl border-4 border-gold/70">
-              <Image src="/images/logo.png" alt="School crest" width={72} height={72} />
+          <div className="grid sm:grid-cols-[170px_1fr] gap-8 items-start">
+            <div className="w-[150px] h-[150px] sm:w-[170px] sm:h-[170px] rounded-full overflow-hidden shadow-2xl border-4 border-gold/80 bg-navy relative">
+              <Image src="/images/founder.png" alt="Bhoj Raj Dahal, Founder and Principal" fill className="object-cover" />
             </div>
             <div>
               <p className="text-[15.5px] text-gray-700 leading-relaxed mb-4">

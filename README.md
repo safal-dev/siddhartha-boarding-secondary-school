@@ -14,12 +14,21 @@ real logo and campus photography.
 
 ## Pages
 - `/` — Home
-- `/about` — History, motto, founder's message, staff
-- `/academics` — Academic ladder, affiliation, results
-- `/admissions` — Admission process, scholarships, enquiry form
-- `/campus-life` — Facilities, boarding/hostel, co-curricular life
-- `/gallery` — Categorized photo gallery
-- `/contact` — Contact details, embedded map, enquiry form
+- `/about` — History timeline, mission/values, founder's full message, community
+  impact (scholarship/insurance programs), "did you know" trivia, staff
+- `/academics` — Detailed per-level curriculum (subjects/focus areas), teaching
+  philosophy, assessment system, SEE results, learning-resource facilities
+- `/admissions` — Process, eligibility by level, documents checklist,
+  scholarships, FAQ accordion, enquiry form
+- `/campus-life` — Residential/recreational facilities, boarding daily routine,
+  clubs & sports, "Student's Voice" media spotlight (4 student profiles)
+- `/gallery` — 5 categories (Campus, Students, Faculty & Staff, Community &
+  Media, Achievements), 17 real photos total
+- `/contact` — Contact details, office hours, embedded map, enquiry form
+
+Each page uses distinct hero imagery and page-specific content — shared data
+(stats, nav) lives in `src/lib/content.js`, but page-level copy and image
+selection are written per page so no two pages repeat the same section.
 
 ## Local development
 ```bash
@@ -58,14 +67,17 @@ vercel --prod   # production deploy
 Every push to `main` will auto-redeploy.
 
 ## Content & images
-- All site copy lives in `src/lib/content.js` (contact info, nav links,
-  academic ladder, facilities, stats) — edit there to update site-wide text.
-- All images are in `public/images/`, sourced from the school's public
-  Facebook page plus the official logo supplied directly by the client.
-  **These are web-resolution (compressed) images.** For the sharpest possible
-  hero/banner images, ask the school for original high-resolution photos and
-  swap the files in `public/images/` (keep the same filenames, or update the
-  references in each page).
+- Shared data (contact info, nav links, academic ladder detail, facilities,
+  stats, student quotes, FAQ, boarding routine) lives in `src/lib/content.js`
+  — edit there to update text reused across pages. Page-specific prose lives
+  directly in each `src/app/<page>/page.js` file.
+- All 17 photos + the logo are in `public/images/`, sourced from the school's
+  public Facebook page, two independent Nepali news articles covering the
+  school (twin-students story, community insurance program), and the official
+  logo supplied directly by the client. **These are web-resolution (compressed)
+  images.** For the sharpest possible hero/banner images, ask the school for
+  original high-resolution photos and swap the files in `public/images/`
+  (keep the same filenames, or update the references in each page).
 
 ## Known gaps to fill with the client before/after launch
 - Official school email address (currently only phone numbers are shown)

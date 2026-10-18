@@ -10,9 +10,6 @@ export default function Academics() {
   return (
     <>
       <section className="relative bg-navy text-white">
-        <div className="absolute inset-0">
-          <Image src="/images/student_voice_girl_outdoor.jpg" alt="Student at Siddhartha" fill className="object-cover opacity-20" />
-        </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Academics</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">Learning That Leads Somewhere</h1>

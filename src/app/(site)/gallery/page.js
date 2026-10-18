@@ -17,9 +17,6 @@ export default function Gallery() {
   return (
     <>
       <section className="relative bg-navy text-white">
-        <div className="absolute inset-0">
-          <Image src="/images/student_voice_girl_radio1.jpg" alt="Student recording at Radio Kawasoti" fill className="object-cover opacity-25" />
-        </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Gallery</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">Moments from Siddhartha</h1>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { siteInfo } from "@/lib/content";
 
 export const metadata = {
@@ -12,9 +11,6 @@ export default function Contact() {
   return (
     <>
       <section className="relative bg-navy text-white overflow-hidden">
-        <div className="absolute -left-20 -bottom-20 w-[420px] h-[420px] opacity-[0.07]">
-          <Image src="/images/logo.png" alt="" fill className="object-contain" />
-        </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Contact Us</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">We&rsquo;d Love to Hear From You</h1>

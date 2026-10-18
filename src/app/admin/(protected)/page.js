@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { connection } from "next/server";
 import { listNotices } from "@/lib/notices-store";
 
 export const metadata = { title: "Dashboard | Siddhartha CMS" };
+export const instant = false;
 
 export default async function AdminDashboard() {
+  await connection();
   const notices = await listNotices();
 
   return (

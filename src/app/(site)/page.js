@@ -1,7 +1,52 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
+import { connection } from "next/server";
 import FounderQuote from "@/components/FounderQuote";
+import { listNotices } from "@/lib/notices-store";
 import { academicLadderShort, siteInfo, stats, studentVoices } from "@/lib/content";
+
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+}
+
+async function LatestNotices() {
+  await connection();
+  const notices = await listNotices();
+  if (notices.length === 0) return null;
+  const latest = notices.slice(0, 3);
+
+  return (
+    <section className="bg-cream border-b border-line py-14 sm:py-16">
+      <div className="container-page">
+        <div className="flex items-center justify-between mb-7 flex-wrap gap-3">
+          <div>
+            <div className="section-kicker !mb-1">Announcements</div>
+            <h2 className="text-[24px] sm:text-[28px] text-navy">Latest Notices</h2>
+          </div>
+          <Link href="/notices" className="text-maroon font-semibold text-[14px] hover:underline">
+            View All Notices →
+          </Link>
+        </div>
+        <div className="grid sm:grid-cols-3 gap-5">
+          {latest.map((n) => (
+            <Link
+              key={n.id}
+              href="/notices"
+              className="bg-white border border-line border-t-4 border-t-maroon p-5 block hover:shadow-md transition-shadow"
+            >
+              <div className="text-[11.5px] uppercase tracking-wide text-gray-500 mb-1.5">{formatDate(n.createdAt)}</div>
+              <h3 className="font-serif text-[16.5px] text-navy mb-1.5 leading-snug">{n.title}</h3>
+              {n.description && (
+                <p className="text-[13.5px] text-gray-600 line-clamp-2">{n.description}</p>
+              )}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
@@ -54,6 +99,11 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* LATEST NOTICES */}
+      <Suspense fallback={null}>
+        <LatestNotices />
+      </Suspense>
 
       {/* WELCOME / MOTTO-LED INTRO */}
       <section className="py-16 sm:py-20 bg-cream">

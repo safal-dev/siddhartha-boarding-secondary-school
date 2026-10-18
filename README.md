@@ -20,10 +20,11 @@ real logo and campus photography.
   philosophy, assessment system, SEE results, learning-resource facilities
 - `/admissions` — Process, eligibility by level, documents checklist,
   scholarships, FAQ accordion, enquiry form
-- `/campus-life` — Residential/recreational facilities, boarding daily routine,
-  clubs & sports, "Student's Voice" media spotlight (4 student profiles)
-- `/gallery` — 5 categories (Campus, Students, Faculty & Staff, Community &
-  Media, Achievements), 17 real photos total
+- `/campus-life` — Facilities, transportation, clubs & sports, "Student's
+  Voice" media spotlight (4 student profiles)
+- `/gallery` — Campus & Leadership, Community & Media, Student's Voice On Air
+- `/notices` — Public notice board; renders uploaded PDFs/images inline
+- `/notices/admin` — Password-protected page to publish/delete notices
 - `/contact` — Contact details, office hours, embedded map, enquiry form
 
 Each page uses distinct hero imagery and page-specific content — shared data
@@ -61,10 +62,36 @@ vercel --prod   # production deploy
    git push -u origin main
    ```
 2. Go to https://vercel.com/new, import the GitHub repo.
-3. Framework preset: Next.js (auto-detected). No environment variables needed.
-4. Click Deploy.
+3. Framework preset: Next.js (auto-detected).
+4. Set environment variables (Project Settings -> Environment Variables):
+   see "Notices feature setup" below — required for the Notices page to work.
+5. Click Deploy.
 
 Every push to `main` will auto-redeploy.
+
+## Notices feature setup (required one-time step)
+
+The `/notices` page lets the school office upload PDFs/images with a title
+and description, and visitors see them rendered inline (no forced download).
+Because Vercel's servers don't have persistent disk storage, uploaded files
+are stored in **Vercel Blob** instead of the local filesystem.
+
+1. In the Vercel dashboard, open this project -> **Storage** tab -> **Create
+   Database** -> **Blob** -> connect it to this project. This automatically
+   adds a `BLOB_READ_WRITE_TOKEN` environment variable — no manual copying
+   needed.
+2. Add one more environment variable yourself: `NOTICES_ADMIN_PASSWORD`,
+   set to a password only school staff should know. This protects
+   `/notices/admin` from random visitors (anyone with the password can
+   publish or delete notices).
+3. Redeploy (or just push a commit) so the new environment variables take
+   effect.
+4. Staff then go to `https://<your-domain>/notices/admin`, enter the
+   password, and upload notices. They appear immediately on `/notices`.
+
+For local development, copy `.env.example` to `.env.local` and fill in the
+same two values (pull `BLOB_READ_WRITE_TOKEN` from the Vercel dashboard, or
+run `vercel env pull .env.local` after linking the project with `vercel link`).
 
 ## Content & images
 - Shared data (contact info, nav links, academic ladder detail, facilities,

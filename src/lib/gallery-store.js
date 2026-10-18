@@ -45,10 +45,10 @@ async function saveIndex(images) {
   });
 }
 
-export async function addGalleryImage({ category, caption, link, file }) {
+async function uploadOneFile({ category, caption, link, file }, suffix = "") {
   const arrayBuffer = await file.arrayBuffer();
   const ext = file.name.split(".").pop() || "jpg";
-  const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}${suffix}`;
   const filePath = `gallery-files/${id}.${ext}`;
 
   const uploaded = await put(filePath, Buffer.from(arrayBuffer), {
@@ -57,8 +57,7 @@ export async function addGalleryImage({ category, caption, link, file }) {
     contentType: file.type || undefined,
   });
 
-  const images = await listGalleryImages();
-  const image = {
+  return {
     id,
     category,
     caption: caption || "",
@@ -67,9 +66,27 @@ export async function addGalleryImage({ category, caption, link, file }) {
     fileName: file.name,
     createdAt: new Date().toISOString(),
   };
+}
+
+export async function addGalleryImage({ category, caption, link, file }) {
+  const image = await uploadOneFile({ category, caption, link, file });
+  const images = await listGalleryImages();
   images.push(image);
   await saveIndex(images);
   return image;
+}
+
+// Uploads every file in parallel, then performs a single read-modify-write
+// of the shared index — avoids the index-overwrite race that would happen
+// if each file went through its own separate addGalleryImage() call.
+export async function addGalleryImages({ category, caption, link, files }) {
+  const newImages = await Promise.all(
+    files.map((file, i) => uploadOneFile({ category, caption, link, file }, `-${i}`))
+  );
+  const images = await listGalleryImages();
+  images.push(...newImages);
+  await saveIndex(images);
+  return newImages;
 }
 
 export async function updateGalleryImage(id, { category, caption, link, file }) {

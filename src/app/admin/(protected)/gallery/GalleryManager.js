@@ -13,7 +13,7 @@ function UploadForm({ onUploaded }) {
   const [category, setCategory] = useState("school");
   const [caption, setCaption] = useState("");
   const [link, setLink] = useState("");
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -22,8 +22,8 @@ function UploadForm({ onUploaded }) {
     e.preventDefault();
     setError("");
     setSuccess("");
-    if (!file) {
-      setError("Please choose an image file.");
+    if (files.length === 0) {
+      setError("Please choose one or more image files.");
       return;
     }
     setBusy(true);
@@ -32,16 +32,17 @@ function UploadForm({ onUploaded }) {
       fd.append("category", category);
       fd.append("caption", caption);
       fd.append("link", link);
-      fd.append("file", file);
+      files.forEach((f) => fd.append("file", f));
       const res = await fetch("/api/gallery", { method: "POST", body: fd });
       const data = await res.json();
       if (!res.ok) {
         throw new Error(data.error || "Upload failed.");
       }
-      setSuccess("Photo added to gallery.");
+      const count = data.images?.length || files.length;
+      setSuccess(count === 1 ? "Photo added to gallery." : `${count} photos added to gallery.`);
       setCaption("");
       setLink("");
-      setFile(null);
+      setFiles([]);
       e.target.reset();
       onUploaded();
     } catch (err) {
@@ -68,7 +69,9 @@ function UploadForm({ onUploaded }) {
         </select>
       </div>
       <div>
-        <label className="block text-[13px] font-semibold text-navy mb-1.5">Caption (optional)</label>
+        <label className="block text-[13px] font-semibold text-navy mb-1.5">
+          Caption (optional) {files.length > 1 && <span className="font-normal text-gray-500">&mdash; applied to all selected photos</span>}
+        </label>
         <input
           type="text"
           value={caption}
@@ -90,22 +93,28 @@ function UploadForm({ onUploaded }) {
         />
       </div>
       <div>
-        <label className="block text-[13px] font-semibold text-navy mb-1.5">Image *</label>
+        <label className="block text-[13px] font-semibold text-navy mb-1.5">Images *</label>
         <input
           type="file"
           accept="image/jpeg,image/png,image/webp,image/gif"
-          onChange={(e) => setFile(e.target.files?.[0] || null)}
+          multiple
+          onChange={(e) => setFiles(Array.from(e.target.files || []))}
           className="w-full border border-line px-3.5 py-2.5 text-[14px] bg-cream"
           required
         />
-        <p className="text-[12px] text-gray-500 mt-1.5">JPG, PNG, WEBP or GIF — max 15MB.</p>
+        <p className="text-[12px] text-gray-500 mt-1.5">
+          JPG, PNG, WEBP or GIF — max 15MB each. Select multiple files to upload them all at once.
+        </p>
+        {files.length > 0 && (
+          <p className="text-[12.5px] text-navy font-semibold mt-1.5">{files.length} file{files.length > 1 ? "s" : ""} selected</p>
+        )}
       </div>
 
       {error && <p className="text-[13.5px] text-maroon font-semibold">{error}</p>}
       {success && <p className="text-[13.5px] text-green-700 font-semibold">{success}</p>}
 
       <button type="submit" disabled={busy} className="btn-maroon disabled:opacity-50">
-        {busy ? "Uploading…" : "Add to Gallery"}
+        {busy ? "Uploading…" : files.length > 1 ? `Add ${files.length} Photos to Gallery` : "Add to Gallery"}
       </button>
     </form>
   );

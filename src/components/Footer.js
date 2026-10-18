@@ -46,8 +46,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-5 text-center text-[12.5px] text-[#8a90ad]">
-          © 2025 Siddhartha Boarding Secondary School, Nawalpur. All rights reserved.
+        <div className="border-t border-white/10 pt-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-center text-[12.5px] text-[#8a90ad]">
+          <span>© 2025 Siddhartha Boarding Secondary School, Nawalpur. All rights reserved.</span>
+          <Link href="/admin/login" className="hover:text-white transition-colors">
+            Staff Login
+          </Link>
         </div>
       </div>
     </footer>

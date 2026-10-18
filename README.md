@@ -24,7 +24,9 @@ real logo and campus photography.
   Voice" media spotlight (4 student profiles)
 - `/gallery` — Campus & Leadership, Community & Media, Student's Voice On Air
 - `/notices` — Public notice board; renders uploaded PDFs/images inline
-- `/notices/admin` — Password-protected page to publish/delete notices
+- `/admin/login` — Staff CMS login (also linked from the site footer)
+- `/admin` — CMS dashboard (protected)
+- `/admin/notices` — Publish/delete notices (protected)
 - `/contact` — Contact details, office hours, embedded map, enquiry form
 
 Each page uses distinct hero imagery and page-specific content — shared data
@@ -69,25 +71,30 @@ vercel --prod   # production deploy
 
 Every push to `main` will auto-redeploy.
 
-## Notices feature setup (required one-time step)
+## Notices CMS setup (required one-time step)
 
-The `/notices` page lets the school office upload PDFs/images with a title
-and description, and visitors see them rendered inline (no forced download).
-Because Vercel's servers don't have persistent disk storage, uploaded files
-are stored in **Vercel Blob** instead of the local filesystem.
+The site has a small CMS at `/admin` where school staff log in and publish
+notices (PDFs or images with a title/description). Visitors see them
+rendered inline on `/notices` — no forced downloads. Because Vercel's
+servers don't have persistent disk storage, uploaded files are stored in
+**Vercel Blob** instead of the local filesystem, and the login session is a
+secure, signed, httpOnly cookie (not a hardcoded user list — just one shared
+staff password).
 
 1. In the Vercel dashboard, open this project -> **Storage** tab -> **Create
    Database** -> **Blob** -> connect it to this project. This automatically
    adds a `BLOB_READ_WRITE_TOKEN` environment variable — no manual copying
    needed.
-2. Add one more environment variable yourself: `NOTICES_ADMIN_PASSWORD`,
-   set to a password only school staff should know. This protects
-   `/notices/admin` from random visitors (anyone with the password can
-   publish or delete notices).
+2. Add one more environment variable yourself: `ADMIN_PASSWORD`, set to a
+   password only school staff should know. This is the CMS login password —
+   anyone who knows it can sign in and publish/delete notices, so keep it
+   private and strong.
 3. Redeploy (or just push a commit) so the new environment variables take
    effect.
-4. Staff then go to `https://<your-domain>/notices/admin`, enter the
-   password, and upload notices. They appear immediately on `/notices`.
+4. Staff then go to `https://<your-domain>/admin/login` (also linked as
+   "Staff Login" in the site footer), sign in with the password, and manage
+   notices from the dashboard. Sessions last 7 days; use "Log Out" in the
+   CMS header to end one early.
 
 For local development, copy `.env.example` to `.env.local` and fill in the
 same two values (pull `BLOB_READ_WRITE_TOKEN` from the Vercel dashboard, or

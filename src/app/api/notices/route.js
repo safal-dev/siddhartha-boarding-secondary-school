@@ -1,14 +1,14 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { SESSION_COOKIE, verifySessionToken } from "@/lib/admin-auth";
 import { addNotice, listNotices } from "@/lib/notices-store";
 
 const MAX_SIZE = 15 * 1024 * 1024; // 15MB
 const ALLOWED_TYPES = ["application/pdf", "image/jpeg", "image/png", "image/webp", "image/gif"];
 
-function checkPassword(req) {
-  const provided = req.headers.get("x-admin-password") || "";
-  const expected = process.env.NOTICES_ADMIN_PASSWORD;
-  if (!expected) return false; // refuse all writes until an admin password is configured
-  return provided === expected;
+async function isAuthed() {
+  const store = await cookies();
+  return verifySessionToken(store.get(SESSION_COOKIE)?.value);
 }
 
 export async function GET() {
@@ -17,8 +17,8 @@ export async function GET() {
 }
 
 export async function POST(req) {
-  if (!checkPassword(req)) {
-    return NextResponse.json({ error: "Invalid or missing admin password." }, { status: 401 });
+  if (!(await isAuthed())) {
+    return NextResponse.json({ error: "Not signed in. Please log in again." }, { status: 401 });
   }
 
   let formData;

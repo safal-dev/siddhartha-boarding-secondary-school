@@ -26,7 +26,13 @@ export async function listGalleryImages() {
   const indexBlob = await getIndexBlob();
   if (!indexBlob) return [];
   try {
-    const res = await fetch(indexBlob.url, { cache: "no-store" });
+    // Cache-bust: Vercel Blob's public URLs sit behind a CDN that can briefly
+    // serve a stale cached copy even with cacheControlMaxAge:0 on the blob
+    // itself. Appending a unique query param forces a fresh edge fetch so
+    // back-to-back writes (e.g. deleting two items quickly) don't race
+    // against a stale read.
+    const bustUrl = `${indexBlob.url}?v=${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    const res = await fetch(bustUrl, { cache: "no-store" });
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data) ? data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) : [];

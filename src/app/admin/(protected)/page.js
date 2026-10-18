@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { connection } from "next/server";
 import { listNotices } from "@/lib/notices-store";
+import { listGalleryImages } from "@/lib/gallery-store";
 
 export const metadata = { title: "Dashboard | Siddhartha CMS" };
 export const instant = false;
 
 export default async function AdminDashboard() {
   await connection();
-  const notices = await listNotices();
+  const [notices, galleryImages] = await Promise.all([listNotices(), listGalleryImages()]);
 
   return (
     <section className="py-14 sm:py-16">
@@ -23,6 +24,15 @@ export default async function AdminDashboard() {
             <div className="font-serif text-[36px] text-maroon font-bold leading-none mb-2">{notices.length}</div>
             <div className="font-semibold text-navy text-[15px] mb-1">Notices Published</div>
             <div className="text-[13px] text-gray-500">Click to publish or manage notices →</div>
+          </Link>
+
+          <Link
+            href="/admin/gallery"
+            className="bg-white border border-line border-t-4 border-t-navy p-6 hover:shadow-md transition-shadow"
+          >
+            <div className="font-serif text-[36px] text-navy font-bold leading-none mb-2">{galleryImages.length}</div>
+            <div className="font-semibold text-navy text-[15px] mb-1">Gallery Photos</div>
+            <div className="text-[13px] text-gray-500">Click to add or manage gallery photos →</div>
           </Link>
         </div>
       </div>

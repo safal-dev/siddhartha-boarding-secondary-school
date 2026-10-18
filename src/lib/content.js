@@ -141,29 +141,3 @@ export const admissionFaqs = [
     a: "Generally: the student's previous school records/transfer certificate, a copy of the student's and guardian's citizenship/birth certificate, and passport-size photos. Please confirm the exact list with the office, as requirements can vary by grade.",
   },
 ];
-
-export const galleryCategories = [
-  {
-    title: "Campus & Leadership",
-    images: [
-      { src: "/images/campus-hero.jpg", alt: "Campus front elevation" },
-      { src: "/images/founder.png", alt: "Bhoj Raj Dahal, Founder and Principal" },
-    ],
-  },
-  {
-    title: "Community & Media",
-    images: [
-      { src: "/images/student-voice.jpg", alt: "The Student's Voice radio program" },
-      { src: "/images/community_insurance_event.jpg", alt: "Community accident-insurance program event" },
-    ],
-  },
-  {
-    title: "The Student's Voice — On Air",
-    images: [
-      { src: "/images/student_voice_boy1.jpg", alt: "Student on The Student's Voice program" },
-      { src: "/images/student_voice_girl_radio1.jpg", alt: "Student recording at Radio Kawasoti" },
-      { src: "/images/student_voice_girl_outdoor.jpg", alt: "Student on The Student's Voice program" },
-      { src: "/images/student_voice_girl_radio2.jpg", alt: "Student on The Student's Voice program" },
-    ],
-  },
-];

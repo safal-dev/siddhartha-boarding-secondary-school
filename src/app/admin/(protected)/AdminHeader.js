@@ -40,6 +40,12 @@ export default function AdminHeader() {
           >
             Notices
           </Link>
+          <Link
+            href="/admin/gallery"
+            className={pathname.startsWith("/admin/gallery") ? "text-gold" : "text-[#c3c9e6] hover:text-white"}
+          >
+            Gallery
+          </Link>
           <Link href="/" target="_blank" className="text-[#c3c9e6] hover:text-white">
             View Site ↗
           </Link>

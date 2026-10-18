@@ -4,10 +4,46 @@ import { Suspense } from "react";
 import { connection } from "next/server";
 import FounderQuote from "@/components/FounderQuote";
 import { listNotices } from "@/lib/notices-store";
+import { listGalleryImages } from "@/lib/gallery-store";
 import { academicLadderShort, siteInfo, stats, studentVoices } from "@/lib/content";
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+}
+
+async function GalleryPreview() {
+  await connection();
+  const images = await listGalleryImages();
+  if (images.length === 0) return null;
+  const latest = images.slice(0, 4);
+
+  return (
+    <section className="bg-white border-t border-line py-16 sm:py-20">
+      <div className="container-page">
+        <div className="section-kicker">Gallery</div>
+        <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Campus Life</h2>
+        <div className="section-divider" />
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          {latest.map((img) => (
+            <div key={img.id} className="relative h-[170px]">
+              <Image
+                src={`/api/gallery/${img.id}/file`}
+                alt={img.caption || "Gallery photo"}
+                fill
+                unoptimized
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-9">
+          <Link href="/gallery" className="btn-outline-navy">
+            View Full Gallery
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 async function LatestNotices() {
@@ -271,30 +307,9 @@ export default function Home() {
       </section>
 
       {/* GALLERY PREVIEW */}
-      <section className="bg-white border-t border-line py-16 sm:py-20">
-        <div className="container-page">
-          <div className="section-kicker">Gallery</div>
-          <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Campus Life</h2>
-          <div className="section-divider" />
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            {[
-              { src: "/images/campus-hero.jpg", alt: "Campus front elevation", pos: "82% 48%" },
-              { src: "/images/community_insurance_event.jpg", alt: "Community insurance program event", pos: "center" },
-              { src: "/images/student-voice.jpg", alt: "The Student's Voice radio program", pos: "center 20%" },
-              { src: "/images/founder.png", alt: "Founder and Principal Bhoj Raj Dahal", pos: "center 15%" },
-            ].map((img) => (
-              <div key={img.src} className="relative h-[170px]">
-                <Image src={img.src} alt={img.alt} fill style={{ objectPosition: img.pos }} className="object-cover" />
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-9">
-            <Link href="/gallery" className="btn-outline-navy">
-              View Full Gallery
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Suspense fallback={null}>
+        <GalleryPreview />
+      </Suspense>
 
       {/* FINAL CTA */}
       <section className="bg-navy text-white text-center py-16 sm:py-20">

@@ -35,7 +35,13 @@ export default function About() {
     <>
       <section className="relative bg-navy text-white">
         <div className="absolute inset-0">
-          <Image src="/images/campus-2.jpg" alt="Campus building" fill className="object-cover opacity-25" />
+          <Image
+            src="/images/campus-hero.jpg"
+            alt="Siddhartha campus building"
+            fill
+            style={{ objectPosition: "center 35%" }}
+            className="object-cover opacity-20"
+          />
         </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">About Us</div>
@@ -46,7 +52,7 @@ export default function About() {
 
       {/* HISTORY */}
       <section className="py-16 sm:py-20">
-        <div className="container-page grid sm:grid-cols-2 gap-12 items-center">
+        <div className="container-page grid sm:grid-cols-[1fr_260px] gap-12">
           <div>
             <div className="section-kicker">Our History</div>
             <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">Established 2046 B.S. (1989 AD)</h2>
@@ -58,12 +64,25 @@ export default function About() {
             </p>
             <p className="text-[15.5px] text-gray-700 leading-relaxed">
               Over 35 years, that conviction grew into a 20-ropani campus with separate
-              academic blocks for primary, lower secondary, secondary and higher secondary
-              levels &mdash; a deliberate design so every age group learns in a calm, focused
-              environment suited to them.
+              academic blocks for primary, lower secondary and secondary levels &mdash; a
+              deliberate design so every age group learns in a calm, focused environment
+              suited to them.
             </p>
           </div>
-          <Image src="/images/campus-1.jpg" alt="Campus building with event banner" width={600} height={420} className="object-cover w-full shadow-xl" />
+          <div className="bg-cream border border-line p-6 space-y-5 self-start">
+            <div>
+              <div className="font-serif text-[26px] text-maroon font-bold">2046 B.S.</div>
+              <div className="text-[12px] uppercase tracking-wide text-gray-500">Founded (1989 AD)</div>
+            </div>
+            <div className="border-t border-line pt-5">
+              <div className="font-serif text-[26px] text-maroon font-bold">20</div>
+              <div className="text-[12px] uppercase tracking-wide text-gray-500">Ropanis of Campus</div>
+            </div>
+            <div className="border-t border-line pt-5">
+              <div className="font-serif text-[26px] text-maroon font-bold">35+</div>
+              <div className="text-[12px] uppercase tracking-wide text-gray-500">Years Serving Kawasoti</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -226,15 +245,16 @@ export default function About() {
           <div className="section-kicker">Our People</div>
           <h2 className="text-[26px] sm:text-[32px] text-navy mb-1">A Dedicated Faculty &amp; Staff</h2>
           <div className="section-divider" />
-          <div className="grid sm:grid-cols-2 gap-6">
-            <Image src="/images/staff-1.jpg" alt="Faculty and staff group" width={560} height={400} className="object-cover w-full shadow-lg" />
-            <Image src="/images/staff-2.jpg" alt="Faculty and staff group" width={560} height={400} className="object-cover w-full shadow-lg" />
+          <div className="bg-navy text-white p-8 sm:p-10 grid sm:grid-cols-[auto_1fr] gap-7 items-center">
+            <div className="w-[64px] h-[64px] rounded-full bg-white/10 flex items-center justify-center shrink-0">
+              <Image src="/images/logo.png" alt="School crest" width={40} height={40} />
+            </div>
+            <p className="text-[16px] sm:text-[18px] font-serif leading-relaxed text-[#e7ecfa]">
+              Our highly qualified, experienced teachers lead every classroom &mdash; from our
+              Montessori wing through our SEE-preparation faculty &mdash; with a shared emphasis
+              on discussion-based teaching and genuine care for every student&rsquo;s growth.
+            </p>
           </div>
-          <p className="text-[15.5px] text-gray-700 leading-relaxed mt-6 max-w-2xl">
-            Our highly qualified, experienced teachers lead every classroom &mdash; from our
-            Montessori wing through our SEE-preparation faculty &mdash; with a shared emphasis on
-            discussion-based teaching and genuine care for every student&rsquo;s growth.
-          </p>
         </div>
       </section>
     </>

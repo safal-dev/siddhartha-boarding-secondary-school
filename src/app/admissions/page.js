@@ -17,9 +17,9 @@ const documents = [
 export default function Admissions() {
   return (
     <>
-      <section className="relative bg-navy text-white">
-        <div className="absolute inset-0">
-          <Image src="/images/students-1.jpg" alt="Students at a school event" fill className="object-cover opacity-25" />
+      <section className="relative bg-navy text-white overflow-hidden">
+        <div className="absolute -right-16 -top-16 w-[420px] h-[420px] opacity-[0.07]">
+          <Image src="/images/logo.png" alt="" fill className="object-contain" />
         </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Admissions</div>

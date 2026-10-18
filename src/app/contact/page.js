@@ -11,9 +11,9 @@ export default function Contact() {
 
   return (
     <>
-      <section className="relative bg-navy text-white">
-        <div className="absolute inset-0">
-          <Image src="/images/staff-2.jpg" alt="Faculty and staff group" fill className="object-cover opacity-25" />
+      <section className="relative bg-navy text-white overflow-hidden">
+        <div className="absolute -left-20 -bottom-20 w-[420px] h-[420px] opacity-[0.07]">
+          <Image src="/images/logo.png" alt="" fill className="object-contain" />
         </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Contact Us</div>

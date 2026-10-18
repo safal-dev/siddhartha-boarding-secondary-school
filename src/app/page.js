@@ -79,9 +79,14 @@ export default function Home() {
               Read our full story →
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <Image src="/images/students-1.jpg" alt="Students at a school event" width={400} height={400} className="rounded-sm object-cover h-full w-full shadow-lg" />
-            <Image src="/images/staff-1.jpg" alt="Faculty and staff" width={400} height={400} className="rounded-sm object-cover h-full w-full shadow-lg mt-8" />
+          <div className="relative h-[360px] sm:h-[420px] rounded-sm overflow-hidden shadow-xl">
+            <Image
+              src="/images/campus-hero.jpg"
+              alt="Siddhartha campus building"
+              fill
+              style={{ objectPosition: "center 38%" }}
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
@@ -119,22 +124,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ACHIEVEMENT BANNER */}
+      {/* ACHIEVEMENT BANNER — typographic, no low-res banner image */}
       <section className="bg-maroon text-white text-center py-16 sm:py-20">
         <div className="container-page">
-          <div className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#f0c67f] mb-2">
+          <div className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#f0c67f] mb-3">
             Results that speak
           </div>
-          <h2 className="text-[26px] sm:text-[32px] text-white mb-6">
+          <h2 className="text-[26px] sm:text-[32px] text-white mb-10">
             Municipality-Topping SEE Results
           </h2>
-          <Image
-            src="/images/see-toppers.jpg"
-            alt="SEE result toppers"
-            width={560}
-            height={560}
-            className="max-w-[520px] w-full mx-auto border-[6px] border-white shadow-xl"
-          />
+          <div className="grid grid-cols-3 max-w-xl mx-auto gap-6 sm:gap-10">
+            <div>
+              <div className="font-serif text-[40px] sm:text-[52px] text-gold leading-none">1st</div>
+              <div className="text-[12px] sm:text-[13px] uppercase tracking-wide text-[#f3dcc0] mt-2">
+                Among 96 Schools in Kawasoti
+              </div>
+            </div>
+            <div>
+              <div className="font-serif text-[40px] sm:text-[52px] text-gold leading-none">94%</div>
+              <div className="text-[12px] sm:text-[13px] uppercase tracking-wide text-[#f3dcc0] mt-2">
+                Top Scorer Average
+              </div>
+            </div>
+            <div>
+              <div className="font-serif text-[40px] sm:text-[52px] text-gold leading-none">69.5</div>
+              <div className="text-[12px] sm:text-[13px] uppercase tracking-wide text-[#f3dcc0] mt-2">
+                Municipality Average Marks
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -151,8 +169,10 @@ export default function Home() {
           </p>
           <div className="grid sm:grid-cols-4 gap-5">
             {studentVoices.map((v) => (
-              <div key={v.image} className="bg-white border border-line overflow-hidden">
-                <Image src={v.image} alt={v.context} width={300} height={360} className="w-full h-[200px] object-cover" />
+              <div key={v.image} className="bg-white border border-line overflow-hidden shadow-sm">
+                <div className="relative h-[220px]">
+                  <Image src={v.image} alt={v.context} fill className="object-cover" />
+                </div>
                 <div className="p-4">
                   <p className="text-[13.5px] text-gray-700 italic leading-snug mb-2">&ldquo;{v.quote}&rdquo;</p>
                   <div className="text-[11.5px] text-maroon font-semibold uppercase tracking-wide">{v.context}</div>
@@ -179,7 +199,7 @@ export default function Home() {
             </div>
             <div className="bg-white border border-line p-6">
               <div className="w-[42px] h-[42px] border-2 border-maroon rounded-full flex items-center justify-center text-maroon font-bold mb-3.5">
-                H
+                T
               </div>
               <h3 className="text-[17px] text-navy mb-1.5 font-serif">Transportation</h3>
               <p className="text-[14.5px] text-gray-600">Dedicated bus routes connecting Kawasoti and nearby villages so distance never blocks a good education.</p>
@@ -208,12 +228,14 @@ export default function Home() {
           <div className="section-divider" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             {[
-              ["/images/campus-2.jpg", "Campus building"],
-              ["/images/staff-2.jpg", "Faculty and staff"],
-              ["/images/students-2.jpg", "Students at a school event"],
-              ["/images/community_insurance_event.jpg", "Community insurance program event"],
-            ].map(([src, alt]) => (
-              <Image key={src} src={src} alt={alt} width={300} height={200} className="h-[170px] w-full object-cover" />
+              { src: "/images/campus-hero.jpg", alt: "Campus front elevation", pos: "82% 48%" },
+              { src: "/images/community_insurance_event.jpg", alt: "Community insurance program event", pos: "center" },
+              { src: "/images/student-voice.jpg", alt: "The Student's Voice radio program", pos: "center 20%" },
+              { src: "/images/founder.png", alt: "Founder and Principal Bhoj Raj Dahal", pos: "center 15%" },
+            ].map((img) => (
+              <div key={img.src} className="relative h-[170px]">
+                <Image src={img.src} alt={img.alt} fill style={{ objectPosition: img.pos }} className="object-cover" />
+              </div>
             ))}
           </div>
           <div className="text-center mt-9">

@@ -143,43 +143,26 @@ export const admissionFaqs = [
 
 export const galleryCategories = [
   {
-    title: "Campus",
+    title: "Campus & Leadership",
     images: [
       { src: "/images/campus-hero.jpg", alt: "Campus front elevation" },
-      { src: "/images/campus-1.jpg", alt: "Campus building with event banner" },
-      { src: "/images/campus-2.jpg", alt: "Campus building with event banner" },
-    ],
-  },
-  {
-    title: "Students",
-    images: [
-      { src: "/images/students-1.jpg", alt: "Students at a school event" },
-      { src: "/images/students-2.jpg", alt: "Students at a school event" },
-      { src: "/images/student_voice_boy1.jpg", alt: "Student on The Student's Voice program" },
-    ],
-  },
-  {
-    title: "Faculty & Staff",
-    images: [
       { src: "/images/founder.png", alt: "Bhoj Raj Dahal, Founder and Principal" },
-      { src: "/images/staff-1.jpg", alt: "Faculty and staff group" },
-      { src: "/images/staff-2.jpg", alt: "Faculty and staff group" },
     ],
   },
   {
     title: "Community & Media",
     images: [
       { src: "/images/student-voice.jpg", alt: "The Student's Voice radio program" },
-      { src: "/images/student_voice_girl_radio1.jpg", alt: "Student recording at Radio Kawasoti" },
       { src: "/images/community_insurance_event.jpg", alt: "Community accident-insurance program event" },
     ],
   },
   {
-    title: "Achievements",
+    title: "The Student's Voice — On Air",
     images: [
-      { src: "/images/see-toppers.jpg", alt: "SEE result toppers banner" },
-      { src: "/images/seal-stamp.jpg", alt: "Official school seal" },
+      { src: "/images/student_voice_boy1.jpg", alt: "Student on The Student's Voice program" },
+      { src: "/images/student_voice_girl_radio1.jpg", alt: "Student recording at Radio Kawasoti" },
       { src: "/images/student_voice_girl_outdoor.jpg", alt: "Student on The Student's Voice program" },
+      { src: "/images/student_voice_girl_radio2.jpg", alt: "Student on The Student's Voice program" },
     ],
   },
 ];

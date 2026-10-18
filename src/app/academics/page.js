@@ -112,24 +112,33 @@ export default function Academics() {
         </div>
       </section>
 
-      {/* RESULTS */}
+      {/* RESULTS — typographic, no low-res banner image */}
       <section className="bg-maroon text-white text-center py-16 sm:py-20">
         <div className="container-page">
-          <div className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#f0c67f] mb-2">
+          <div className="text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#f0c67f] mb-3">
             Results that speak
           </div>
-          <h2 className="text-[26px] sm:text-[32px] text-white mb-3">Municipality-Topping SEE Results</h2>
-          <p className="text-[#f3dcc0] max-w-xl mx-auto mb-7 text-[15px]">
-            Our students have placed first in Kawasoti Municipality among 96 schools in recent
-            SEE results, with top scorers achieving above 94% average marks.
-          </p>
-          <Image
-            src="/images/see-toppers.jpg"
-            alt="SEE result toppers"
-            width={560}
-            height={560}
-            className="max-w-[520px] w-full mx-auto border-[6px] border-white shadow-xl"
-          />
+          <h2 className="text-[26px] sm:text-[32px] text-white mb-10">Municipality-Topping SEE Results</h2>
+          <div className="grid grid-cols-3 max-w-xl mx-auto gap-6 sm:gap-10">
+            <div>
+              <div className="font-serif text-[40px] sm:text-[52px] text-gold leading-none">1st</div>
+              <div className="text-[12px] sm:text-[13px] uppercase tracking-wide text-[#f3dcc0] mt-2">
+                Among 96 Schools in Kawasoti
+              </div>
+            </div>
+            <div>
+              <div className="font-serif text-[40px] sm:text-[52px] text-gold leading-none">94%</div>
+              <div className="text-[12px] sm:text-[13px] uppercase tracking-wide text-[#f3dcc0] mt-2">
+                Top Scorer Average
+              </div>
+            </div>
+            <div>
+              <div className="font-serif text-[40px] sm:text-[52px] text-gold leading-none">69.5</div>
+              <div className="text-[12px] sm:text-[13px] uppercase tracking-wide text-[#f3dcc0] mt-2">
+                Municipality Average Marks
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

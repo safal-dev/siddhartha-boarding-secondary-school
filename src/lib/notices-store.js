@@ -76,3 +76,47 @@ export async function deleteNotice(id) {
   }
   return true;
 }
+
+export async function updateNotice(id, { title, description, file }) {
+  const notices = await listNotices();
+  const index = notices.findIndex((n) => n.id === id);
+  if (index === -1) return null;
+
+  const existing = notices[index];
+  const updated = { ...existing };
+
+  if (typeof title === "string") updated.title = title;
+  if (typeof description === "string") updated.description = description;
+
+  if (file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const isPdf = file.type === "application/pdf";
+    const ext = isPdf ? "pdf" : (file.name.split(".").pop() || "jpg");
+    const filePath = `notices-files/${id}.${ext}`;
+
+    const uploaded = await put(filePath, Buffer.from(arrayBuffer), {
+      access: "public",
+      addRandomSuffix: false,
+      allowOverwrite: true,
+      contentType: file.type || undefined,
+    });
+
+    const oldFileUrl = existing.fileUrl;
+    updated.fileUrl = uploaded.url;
+    updated.fileType = isPdf ? "pdf" : "image";
+    updated.fileName = file.name;
+
+    if (oldFileUrl && oldFileUrl !== uploaded.url) {
+      try {
+        await del(oldFileUrl);
+      } catch {
+        // old file already gone, ignore
+      }
+    }
+  }
+
+  updated.updatedAt = new Date().toISOString();
+  notices[index] = updated;
+  await saveIndex(notices);
+  return updated;
+}

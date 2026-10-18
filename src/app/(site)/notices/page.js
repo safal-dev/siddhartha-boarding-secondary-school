@@ -46,14 +46,19 @@ async function NoticesList() {
             {n.fileType === "pdf" ? (
               <>
                 <object
-                  data={n.fileUrl}
+                  data={`/api/notices/${n.id}/file`}
                   type="application/pdf"
                   className="w-full h-[70vh] min-h-[420px] border border-line bg-white"
                   aria-label={n.title}
                 >
                   <div className="p-6 text-center text-[14px] text-gray-600">
                     Your browser can&rsquo;t preview this PDF inline.{" "}
-                    <a href={n.fileUrl} target="_blank" rel="noreferrer" className="text-maroon font-semibold underline">
+                    <a
+                      href={`/api/notices/${n.id}/file`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-maroon font-semibold underline"
+                    >
                       Open it in a new tab
                     </a>
                     .
@@ -61,7 +66,7 @@ async function NoticesList() {
                 </object>
                 <div className="text-right mt-2">
                   <a
-                    href={n.fileUrl}
+                    href={`/api/notices/${n.id}/file`}
                     target="_blank"
                     rel="noreferrer"
                     className="text-[13px] text-maroon font-semibold hover:underline"
@@ -71,10 +76,10 @@ async function NoticesList() {
                 </div>
               </>
             ) : (
-              <a href={n.fileUrl} target="_blank" rel="noreferrer" className="block">
+              <a href={`/api/notices/${n.id}/file`} target="_blank" rel="noreferrer" className="block">
                 <div className="relative w-full h-[70vh] min-h-[420px] bg-white border border-line">
                   <Image
-                    src={n.fileUrl}
+                    src={`/api/notices/${n.id}/file`}
                     alt={n.title}
                     fill
                     className="object-contain"

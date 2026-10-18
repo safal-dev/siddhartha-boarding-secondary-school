@@ -44,7 +44,7 @@ export async function POST(req) {
   if (file.size > MAX_SIZE) {
     return NextResponse.json({ error: "File is too large (max 15MB)." }, { status: 400 });
   }
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  if (!process.env.BLOB_READ_WRITE_TOKEN && !process.env.BLOB_STORE_ID) {
     return NextResponse.json(
       { error: "File storage is not configured yet. Enable Vercel Blob storage for this project and redeploy." },
       { status: 500 }

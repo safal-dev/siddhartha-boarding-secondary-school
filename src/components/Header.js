@@ -64,7 +64,7 @@ export default function Header() {
                       <span className="text-[10px] mt-0.5">▾</span>
                     </button>
                     {resourcesOpen && (
-                      <ul className="absolute left-0 top-full pt-2 w-44">
+                      <ul className="absolute left-0 top-full pt-2 w-56">
                         <div className="bg-white border border-line shadow-lg py-2">
                           {l.children.map((c) => (
                             <li key={c.href}>

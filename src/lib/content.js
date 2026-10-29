@@ -25,6 +25,7 @@ export const navLinks = [
       { href: "/campus-life", label: "Campus Life" },
       { href: "/gallery", label: "Gallery" },
       { href: "/notices", label: "Notices" },
+      { href: "/student-voice", label: "The Student's Voice" },
     ],
   },
   { href: "/contact", label: "Contact" },

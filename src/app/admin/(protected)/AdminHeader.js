@@ -46,6 +46,12 @@ export default function AdminHeader() {
           >
             Gallery
           </Link>
+          <Link
+            href="/admin/student-voice"
+            className={pathname.startsWith("/admin/student-voice") ? "text-gold" : "text-[#c3c9e6] hover:text-white"}
+          >
+            Videos
+          </Link>
           <Link href="/" target="_blank" className="text-[#c3c9e6] hover:text-white">
             View Site ↗
           </Link>

@@ -97,8 +97,8 @@ export default function CampusLife() {
           </div>
           <div className="relative h-[320px] sm:h-[380px] shadow-xl">
             <Image
-              src="/images/community_insurance_event.jpg"
-              alt="Community program event"
+              src="/images/school_courtyard_event.jpg"
+              alt="Students and staff gathered in the school courtyard during a campus event"
               fill
               className="object-cover"
             />

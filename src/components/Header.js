@@ -32,7 +32,7 @@ export default function Header() {
                 Secondary School
               </div>
               <div className="text-[11px] uppercase tracking-wider text-maroon font-semibold">
-                Est. {siteInfo.established.split(" ")[0]} &middot; Nawalpur
+                Est. {siteInfo.established.split(" ")[0]} &middot; Kawasoti-3, Nawalpur
               </div>
             </div>
           </Link>

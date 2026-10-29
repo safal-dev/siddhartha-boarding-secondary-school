@@ -19,15 +19,6 @@ export default function CampusLife() {
   return (
     <>
       <section className="relative bg-navy text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/campus-hero.jpg"
-            alt="Siddhartha campus building"
-            fill
-            style={{ objectPosition: "25% 40%" }}
-            className="object-cover opacity-25"
-          />
-        </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">Campus Life</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">Life On Our 20-Ropani Campus</h1>

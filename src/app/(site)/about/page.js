@@ -34,15 +34,6 @@ export default function About() {
   return (
     <>
       <section className="relative bg-navy text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/campus-hero.jpg"
-            alt="Siddhartha campus building"
-            fill
-            style={{ objectPosition: "center 35%" }}
-            className="object-cover opacity-20"
-          />
-        </div>
         <div className="relative container-page py-20 sm:py-24 text-center">
           <div className="section-kicker !text-gold">About Us</div>
           <h1 className="text-[32px] sm:text-[42px] font-serif mb-3">Our Story, Our Purpose</h1>

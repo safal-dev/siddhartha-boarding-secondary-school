@@ -165,8 +165,8 @@ export default function About() {
       <section className="bg-cream py-16 sm:py-20">
         <div className="container-page grid sm:grid-cols-2 gap-12 items-center">
           <Image
-            src="/images/community_insurance_event.jpg"
-            alt="Community accident-insurance program event"
+            src="/images/founder_scholarship_ceremony.jpg"
+            alt="Founder Bhoj Raj Dahal performing a ceremonial lamp-lighting at a community event"
             width={560}
             height={400}
             className="object-cover w-full shadow-xl"

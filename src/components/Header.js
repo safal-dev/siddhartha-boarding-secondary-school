@@ -26,6 +26,9 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3.5">
             <Image src="/images/logo.png" alt="School crest" width={54} height={54} />
             <div>
+              <div className="hidden sm:block italic text-[10px] sm:text-[11px] text-maroon/90 leading-tight tracking-wide mb-0.5">
+                &ldquo;{siteInfo.motto}&rdquo;
+              </div>
               <div className="font-bold text-navy leading-tight text-[17px] sm:text-[19px] font-serif">
                 Siddhartha Boarding
                 <br />

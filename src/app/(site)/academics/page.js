@@ -73,7 +73,7 @@ export default function Academics() {
               research skills into practice well beyond the syllabus.
             </p>
           </div>
-          <Image src="/images/student_voice_girl_radio2.jpg" alt="Student discussing on Radio Kawasoti" width={560} height={400} className="object-cover w-full shadow-xl" />
+          <Image src="/images/principal_assembly_greeting.jpg" alt="Students and staff gathered for a school assembly" width={560} height={400} className="object-cover w-full shadow-xl" />
         </div>
       </section>
 

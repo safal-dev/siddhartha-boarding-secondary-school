@@ -9,6 +9,8 @@ import { navLinks, siteInfo } from "@/lib/content";
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
   return (
     <>
@@ -42,18 +44,57 @@ export default function Header() {
 
           <nav className="hidden lg:block">
             <ul className="flex gap-7 font-semibold text-[14.5px] text-navy">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className={`hover:text-maroon transition-colors ${
-                      pathname === l.href ? "text-maroon" : ""
-                    }`}
+              {navLinks.map((l) =>
+                l.children ? (
+                  <li
+                    key={l.label}
+                    className="relative"
+                    onMouseEnter={() => setResourcesOpen(true)}
+                    onMouseLeave={() => setResourcesOpen(false)}
                   >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+                    <button
+                      type="button"
+                      onClick={() => setResourcesOpen((v) => !v)}
+                      className={`flex items-center gap-1 hover:text-maroon transition-colors ${
+                        l.children.some((c) => c.href === pathname) ? "text-maroon" : ""
+                      }`}
+                      aria-expanded={resourcesOpen}
+                    >
+                      {l.label}
+                      <span className="text-[10px] mt-0.5">▾</span>
+                    </button>
+                    {resourcesOpen && (
+                      <ul className="absolute left-0 top-full pt-2 w-44">
+                        <div className="bg-white border border-line shadow-lg py-2">
+                          {l.children.map((c) => (
+                            <li key={c.href}>
+                              <Link
+                                href={c.href}
+                                className={`block px-4 py-2 hover:bg-cream hover:text-maroon transition-colors ${
+                                  pathname === c.href ? "text-maroon" : "text-navy"
+                                }`}
+                              >
+                                {c.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </div>
+                      </ul>
+                    )}
+                  </li>
+                ) : (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className={`hover:text-maroon transition-colors ${
+                        pathname === l.href ? "text-maroon" : ""
+                      }`}
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </nav>
 
@@ -73,13 +114,38 @@ export default function Header() {
         {open && (
           <div className="lg:hidden border-t border-line bg-white">
             <ul className="container-page py-4 flex flex-col gap-4 font-semibold text-navy">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} onClick={() => setOpen(false)}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((l) =>
+                l.children ? (
+                  <li key={l.label}>
+                    <button
+                      type="button"
+                      className="flex items-center gap-1.5 w-full"
+                      onClick={() => setMobileResourcesOpen((v) => !v)}
+                      aria-expanded={mobileResourcesOpen}
+                    >
+                      {l.label}
+                      <span className="text-[11px]">{mobileResourcesOpen ? "▴" : "▾"}</span>
+                    </button>
+                    {mobileResourcesOpen && (
+                      <ul className="mt-3 ml-3 flex flex-col gap-3 text-[14.5px] font-medium text-gray-700 border-l border-line pl-4">
+                        {l.children.map((c) => (
+                          <li key={c.href}>
+                            <Link href={c.href} onClick={() => setOpen(false)}>
+                              {c.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ) : (
+                  <li key={l.href}>
+                    <Link href={l.href} onClick={() => setOpen(false)}>
+                      {l.label}
+                    </Link>
+                  </li>
+                )
+              )}
               <li>
                 <Link href="/admissions" className="btn-maroon inline-block" onClick={() => setOpen(false)}>
                   Apply Now

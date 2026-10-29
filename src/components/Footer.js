@@ -2,6 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { navLinks, siteInfo } from "@/lib/content";
 
+// Flatten nav links (including any dropdown children) for the footer's
+// simple link list, skipping Home.
+const footerLinks = navLinks
+  .slice(1)
+  .flatMap((l) => (l.children ? l.children : [l]));
+
 export default function Footer() {
   return (
     <footer className="bg-navy-dark text-[#c7cce0] pt-14 pb-6 text-[14px] mt-auto">
@@ -22,7 +28,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-serif text-[16px] mb-3.5">Quick Links</h4>
             <ul className="space-y-2">
-              {navLinks.slice(1).map((l) => (
+              {footerLinks.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="hover:text-white transition-colors">
                     {l.label}

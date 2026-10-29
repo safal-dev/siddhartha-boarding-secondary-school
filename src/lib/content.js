@@ -19,9 +19,14 @@ export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/academics", label: "Academics" },
   { href: "/admissions", label: "Admissions" },
-  { href: "/campus-life", label: "Campus Life" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/notices", label: "Notices" },
+  {
+    label: "Resources",
+    children: [
+      { href: "/campus-life", label: "Campus Life" },
+      { href: "/gallery", label: "Gallery" },
+      { href: "/notices", label: "Notices" },
+    ],
+  },
   { href: "/contact", label: "Contact" },
 ];
 

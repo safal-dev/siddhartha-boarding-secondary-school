@@ -6,6 +6,14 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 }
 
+// Avoids a lone video card sitting in a mostly-empty 3-column grid: cap the
+// grid width to roughly match how many cards actually exist.
+function gridClassFor(count) {
+  if (count === 1) return "grid-cols-1 max-w-sm";
+  if (count === 2) return "grid-cols-1 sm:grid-cols-2 max-w-3xl";
+  return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+}
+
 export default function VideoGrid({ videos }) {
   const [active, setActive] = useState(null);
 
@@ -35,7 +43,7 @@ export default function VideoGrid({ videos }) {
   return (
     <>
       <div className="container-page py-14 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid gap-6 ${gridClassFor(videos.length)}`}>
           {videos.map((v) => (
             <button
               key={v.id}

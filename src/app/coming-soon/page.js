@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { siteInfo } from "@/lib/content";
 
 export const metadata = {
@@ -23,10 +22,6 @@ export default function ComingSoonPage() {
 
       <div className="relative flex-1 flex items-center justify-center px-6 py-16">
         <div className="max-w-xl w-full text-center">
-          <div className="mx-auto mb-7 w-[110px] h-[110px] relative">
-            <Image src="/images/logo.png" alt="School crest" fill className="object-contain" priority />
-          </div>
-
           <p className="italic text-[13px] sm:text-[14px] text-[#e9d9a7] tracking-wide mb-3">
             &ldquo;{siteInfo.motto}&rdquo;
           </p>
